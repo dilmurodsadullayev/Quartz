@@ -1,0 +1,862 @@
+# English translations for QUARTZ project.
+# Copyright (C) 2025 THE QUARTZ PROJECT'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the QUARTZ package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: QUARTZ 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-26 14:32+0500\n"
+"PO-Revision-Date: 2025-06-26 15:00+0500\n"
+"Last-Translator: AI Assistant\n"
+"Language-Team: English <en@example.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# --- Sozlamalar va Umumiy shablon (base.html) ---
+#: config/settings.py:54 templates/quartz/base.html:85
+#: templates/quartz/base.html:98
+msgid "O'zbekcha"
+msgstr "Uzbek"
+
+#: config/settings.py:55 templates/quartz/base.html:88
+#: templates/quartz/base.html:89 templates/quartz/base.html:100
+msgid "English"
+msgstr "English"
+
+#: templates/quartz/base.html:65 templates/quartz/project.html:165
+msgid "Loyiha haqida"
+msgstr "About the Project"
+
+#: templates/quartz/base.html:66 templates/quartz/index.html:62
+#: templates/quartz/news.html:6
+msgid "Yangiliklar"
+msgstr "News"
+
+#: templates/quartz/base.html:67
+msgid "Faoliyat"
+msgstr "Activities"
+
+#: templates/quartz/base.html:68 templates/quartz/meeting.html:6
+msgid "Uchrashuvlar"
+msgstr "Meetings"
+
+#: templates/quartz/base.html:69
+msgid "Tender"
+msgstr "Tenders"
+
+#: templates/quartz/base.html:70 templates/quartz/index.html:175
+#: templates/quartz/partners.html:332
+msgid "Hamkorlar"
+msgstr "Partners"
+
+#: templates/quartz/base.html:71
+msgid "Takliflar"
+msgstr "Proposals"
+
+#: templates/quartz/base.html:72
+msgid "Hujjatlar"
+msgstr "Documents"
+
+#: templates/quartz/base.html:75
+msgid "LMS"
+msgstr "LMS"
+
+#: templates/quartz/base.html:86
+msgid "O'zbek"
+msgstr "Uzbek"
+
+#: templates/quartz/base.html:131
+msgid ""
+"Ushbu loyiha Evropa komissiyasi ko'magida moliyalashtirildi. Ushbu loyiha "
+"veb-sayti faqat muallifning fikrlarini aks ettiradi va komissiya undagi "
+"ma'lumotlardan foydalanish uchun javobgar bo'lmaydi. Oliy ta'lim sohasidagi "
+"salohiyatni oshirish loyihalari."
+msgstr ""
+"This project has been funded with support from the European Commission. This "
+"project website reflects the views only of the author, and the Commission "
+"cannot be held responsible for any use which may be made of the "
+"information contained therein. Projects for capacity building in the field "
+"of higher education."
+
+#: templates/quartz/base.html:134
+msgid "Manzil"
+msgstr "Address"
+
+#: templates/quartz/base.html:135
+msgid ""
+"<strong>Manzil:</strong> 156, Shota Rustaveli ko'chasi, Toshkent, O'zbekiston"
+msgstr ""
+"<strong>Address:</strong> 156, Shota Rustaveli street, Tashkent, Uzbekistan"
+
+#: templates/quartz/base.html:136
+msgid "Email"
+msgstr "Email"
+
+#: templates/quartz/base.html:137
+msgid "<strong>Telefon:</strong> +998 (78) 129-40-40"
+msgstr "<strong>Phone:</strong> +998 (78) 129-40-40"
+
+#: templates/quartz/base.html:138
+msgid "<strong>Ish vaqti:</strong> Har kuni 9:00 - 16:00"
+msgstr "<strong>Working hours:</strong> Every day 9:00 AM - 4:00 PM"
+
+#: templates/quartz/base.html:141
+msgid "Resurslar"
+msgstr "Resources"
+
+#: templates/quartz/base.html:157
+msgid "© Copyright 2025 | Usman Niyazbekov"
+msgstr "© Copyright 2025 | Usman Niyazbekov"
+
+
+# --- Faoliyatlar (activity.html, activity_detail.html) ---
+#: templates/quartz/activity.html:6
+msgid "Faoliyatlar"
+msgstr "Activities"
+
+#: templates/quartz/activity.html:14
+msgid "Bizning Faoliyatimiz"
+msgstr "Our Activities"
+
+#: templates/quartz/activity.html:20
+msgid "Loyiha doirasida amalga oshirilgan so'nggi tadbirlar va faoliyatlar."
+msgstr "Recent events and activities carried out within the project."
+
+#: templates/quartz/activity.html:32 templates/quartz/news.html:157
+msgid "Rasm mavjud emas"
+msgstr "Image not available"
+
+#: templates/quartz/activity.html:43 templates/quartz/meeting.html:202
+msgid "Batafsil ma'lumot"
+msgstr "More Information"
+
+#: templates/quartz/activity.html:50
+msgid "Hozircha faoliyatlar mavjud emas."
+msgstr "No activities available at the moment."
+
+#: templates/quartz/activity_detail.html:6 templates/quartz/news_detail.html:6
+msgid "QUARTZ"
+msgstr "QUARTZ"
+
+#: templates/quartz/activity_detail.html:137
+msgid "Barcha faoliyatlar"
+msgstr "All Activities"
+
+
+# --- Murojaatlar (feedback.html) ---
+#: templates/quartz/feedback.html:6
+msgid "Takliflar va Murojaatlar"
+msgstr "Suggestions and Appeals"
+
+#: templates/quartz/feedback.html:107
+msgid "Takliflar va Savollar Bo'yicha Murojaat"
+msgstr "Contact for Suggestions and Questions"
+
+#: templates/quartz/feedback.html:115
+msgid "Ismingiz"
+msgstr "Your Name"
+
+#: templates/quartz/feedback.html:118
+msgid "Telefon raqamingiz"
+msgstr "Your Phone Number"
+
+#: templates/quartz/feedback.html:121
+msgid "Sarlavha"
+msgstr "Subject"
+
+#: templates/quartz/feedback.html:126
+msgid "Xabar matni..."
+msgstr "Message text..."
+
+#: templates/quartz/feedback.html:130
+msgid "Yuborish"
+msgstr "Send"
+
+
+# --- Bosh sahifa (index.html) ---
+#: templates/quartz/index.html:6
+msgid "QUARTZ Loyihasi - Bosh sahifa"
+msgstr "QUARTZ Project - Home Page"
+
+#: templates/quartz/index.html:26
+msgid "Slayder rasmi 1"
+msgstr "Slider image 1"
+
+#: templates/quartz/index.html:32
+msgid "Slayder rasmi 2"
+msgstr "Slider image 2"
+
+#: templates/quartz/index.html:38
+msgid "Slayder rasmi 3"
+msgstr "Slider image 3"
+
+#: templates/quartz/index.html:80 templates/quartz/index.html:140
+#: templates/quartz/news.html:164 templates/quartz/tender.html:128
+msgid "Batafsil"
+msgstr "Read More"
+
+#: templates/quartz/index.html:89 templates/quartz/news_detail.html:139
+msgid "Barcha yangiliklar"
+msgstr "All News"
+
+#: templates/quartz/index.html:115
+msgid "Tenderlar"
+msgstr "Tenders"
+
+#: templates/quartz/index.html:125 templates/quartz/tender_detail.html:17
+msgid "Faol"
+msgstr "Active"
+
+#: templates/quartz/index.html:127 templates/quartz/tender_detail.html:21
+msgid "Yopilgan"
+msgstr "Closed"
+
+#: templates/quartz/index.html:135 templates/quartz/tender_detail.html:39
+msgid "Tugash vaqti:"
+msgstr "End time:"
+
+#: templates/quartz/index.html:149
+msgid "Barcha tenderlar"
+msgstr "All Tenders"
+
+#: templates/quartz/index.html:183 templates/quartz/index.html:199
+msgid "TUIT logotipi"
+msgstr "TUIT logo"
+
+#: templates/quartz/index.html:186 templates/quartz/index.html:202
+msgid "M logotipi"
+msgstr "M logo"
+
+#: templates/quartz/index.html:189 templates/quartz/index.html:205
+msgid "KIUT logotipi"
+msgstr "KIUT logo"
+
+#: templates/quartz/index.html:192 templates/quartz/index.html:208
+msgid "Silkroad logotipi"
+msgstr "Silkroad logo"
+
+#: templates/quartz/index.html:195 templates/quartz/index.html:211
+msgid "Aquilae logotipi"
+msgstr "Aquilae logo"
+
+
+# --- Uchrashuvlar (meeting.html) ---
+#: templates/quartz/meeting.html:162
+msgid "Loyiha Uchrashuvlari"
+msgstr "Project Meetings"
+
+#: templates/quartz/meeting.html:168
+msgid "Loyiha doirasida o'tkazilgan muhim uchrashuvlar va tadbirlar."
+msgstr "Important meetings and events held within the project."
+
+#: templates/quartz/meeting.html:189
+msgid "Vaqti:"
+msgstr "Time:"
+
+#: templates/quartz/meeting.html:193
+msgid "O'tkazilish joyi:"
+msgstr "Location:"
+
+#: templates/quartz/meeting.html:209
+msgid "Hozircha uchrashuvlar mavjud emas."
+msgstr "No meetings available at the moment."
+
+
+# --- Yangiliklar (news.html) ---
+#: templates/quartz/news.html:139
+msgid "So'nggi Yangiliklar"
+msgstr "Latest News"
+
+#: templates/quartz/news.html:145
+msgid "Loyiha hayotidagi eng so'nggi voqealar va yangiliklar bilan tanishing."
+msgstr "Check out the latest events and news from the project's life."
+
+#: templates/quartz/news.html:171
+msgid "Hozircha yangiliklar mavjud emas."
+msgstr "No news available at the moment."
+
+
+# --- Hamkorlar (partners.html) ---
+#: templates/quartz/partners.html:173
+msgid "TOSHKENT KIMYO XALQARO UNIVERSITETI"
+msgstr "KIMYO INTERNATIONAL UNIVERSITY IN TASHKENT"
+
+#: templates/quartz/partners.html:175
+msgid ""
+"\n"
+"                    Toshkent shahridagi Kimyo xalqaro universiteti, "
+"mamlakatdagi birinchi xususiy oliy ta'lim\n"
+"                    muassasasi dastlab O'zbekiston Respublikasi Vazirlar "
+"Mahkamasi huzuridagi ta'lim sifatini\n"
+"                    nazorat qilish Davlat inspeksiyasining 0002-sonli "
+"(033297)davlat litsenziyasi asosida Toshkent\n"
+"                    shahridagi Yeoju texnika instituti nomi bilan tashkil "
+"etilgan. 24.07.2018 yildagi, shuningdek\n"
+"                    O'zbekiston Respublikasi Vazirlar Mahkamasining 1007 "
+"yildagi 17.12.2019-sonli qarori.\n"
+"                    Universitet yuqori malakali bakalavr va Magistratura "
+"talabalarini kunduzgi, sirtqi va kechki\n"
+"                    ta'lim shakllari bo'yicha o'zbek, rus va ingliz "
+"tillarida, shuningdek, ikkinchi mutaxassislik\n"
+"                    bo'yicha tayyorlaydi. Akademik faoliyat Janubiy Koreya, "
+"AQSh, Buyuk Britaniya, Germaniya,\n"
+"                    Frantsiya, Italiya, Yaponiya va Malayziya kabi xorijiy "
+"davlatlarning nufuzli universitetlari\n"
+"                    bitiruvchilari bo'lgan xalqaro va mahalliy professorlar "
+"tomonidan amalga oshiriladi. Hozirda\n"
+"                    KIUT beshta ta'lim maktabi tarkibida 28 ta bakalavr va "
+"20 ta magistr dasturlari bo'yicha\n"
+"                    mutaxassislar tayyorlamoqda. 2021/2022 o'quv yilida "
+"universitetning Namangan filiali, 2022/2023\n"
+"                    o'quv yilida universitetning Samarqand filiali tashkil "
+"etildi. 2022 yilda O'zbekistonning\n"
+"                    nodavlat universitetlari orasida KIUT birinchilardan "
+"bo'lib KAZSEE va IQAA agentliklaridan\n"
+"                    ta'lim dasturlari bo'yicha xalqaro akkreditatsiya "
+"sertifikatlarini oldi va Evropaning EQAR\n"
+"                    ma'lumotlar bazasiga kiritildi. KIUT ta'lim xizmatlarini "
+"ko'rsatish uchun barcha\n"
+"                    litsenziyalarga ega va universitet tomonidan berilgan "
+"darajalar O'zbekiston hududida to'liq\n"
+"                    tan olingan.\n"
+"                    "
+msgstr ""
+"Kimyo International University in Tashkent, the first private higher "
+"education institution in the country, was initially established as Yeoju "
+"Technical Institute in Tashkent based on the state license No. 0002 (033297) "
+"from the State Inspectorate for Supervision of Quality in Education under "
+"the Cabinet of Ministers of the Republic of Uzbekistan, dated 24.07.2018, as "
+"well as the decision No. 1007 of the Cabinet of Ministers of the Republic of "
+"Uzbekistan dated 17.12.2019. The university prepares highly qualified "
+"bachelor's and master's students in full-time, part-time, and evening "
+"forms of education in Uzbek, Russian, and English languages, as well as for "
+"a second specialty. Academic activities are carried out by international "
+"and local professors who are graduates of prestigious universities from "
+"foreign countries such as South Korea, the USA, the UK, Germany, France, "
+"Italy, Japan, and Malaysia. Currently, KIUT prepares specialists in 28 "
+"bachelor's and 20 master's programs within five educational schools. The "
+"Namangan branch of the university was established in the 2021/2022 academic "
+"year, and the Samarkand branch in the 2022/2023 academic year. In 2022, "
+"among the non-state universities of Uzbekistan, KIUT was one of the first "
+"to receive international accreditation certificates for its educational "
+"programs from the KAZSEE and IQAA agencies and was included in the European "
+"EQAR database. KIUT has all the necessary licenses to provide educational "
+"services, and the degrees awarded by the university are fully recognized in "
+"the territory of Uzbekistan."
+
+#: templates/quartz/partners.html:199 templates/quartz/partners.html:236
+#: templates/quartz/partners.html:274 templates/quartz/partners.html:298
+msgid "Your browser does not support the video tag."
+msgstr "Your browser does not support the video tag."
+
+#: templates/quartz/partners.html:214
+msgid "TOSHKENT AXBOROT TEXNOLOGIYALARI UNIVERSITETI URGANCH FILIALI"
+msgstr "TASHKENT UNIVERSITY OF INFORMATION TECHNOLOGIES URGENCH BRANCH"
+
+#: templates/quartz/partners.html:216
+msgid ""
+"\n"
+"                    Toshkent axborot texnologiyalari universitetining "
+"Urganch filiali (TATUUF qisqartmasi) Urganch\n"
+"                    shahridagi informatika va axborot texnologiyalari, "
+"pochta aloqasi, radioeshittirish va\n"
+"                    televideniye, telekommunikatsiyalar bo'yicha yuqori "
+"malakali mutaxassislar tayyorlaydigan oliy\n"
+"                    o'quv yurtidir. Urganch filiali O'zbekiston Respublikasi "
+"Prezidentining qarori No. PQ-91 yil 2\n"
+"                    iyundagi 2005 yil \"axborot texnologiyalari sohasida "
+"kadrlar tayyorlash tizimini\n"
+"                    takomillashtirish to'g'risida\" gi son. O'zbekiston "
+"Respublikasi oliy va O'rta maxsus ta'lim\n"
+"                    vazirligining 130 yil 14 iyundagi 2005-sonli \"Oliy "
+"ta'lim muassasalarining filiallari\" 23 iyul\n"
+"                    kuni Urganch shahrida Toshkent axborot texnologiyalari "
+"universitetining hududiy filiali sifatida\n"
+"                    tashkil etilgan \"modelni tasdiqlash to'g'risida\" gi "
+"buyrug'ini bajarish maqsadida 2005 yil\n"
+"                    Nizom \" va O'zbekiston aloqa va axborotlashtirish "
+"agentligining 21 iyul 2005 yil 07-8/2015-son.\n"
+"                    2005 yildan hozirgi kungacha u Toshkent axborot "
+"texnologiyalari universitetining Urganch filiali\n"
+"                    deb ataladi. Universitetda 2600 dan ortiq talaba tahsil "
+"oladi. Universitet tashkil etilganidan\n"
+"                    beri 30 000 dan ortiq yuqori malakali mutaxassislar "
+"tayyorlandi. Universitet 26 ta yo'nalish\n"
+"                    bo'yicha bakalavrlar va 32 ta mutaxassislik bo'yicha "
+"magistrlar tayyorlaydi.\n"
+"                    "
+msgstr ""
+"The Urgench branch of the Tashkent University of Information Technologies "
+"(abbreviated as TUITUB) is a higher educational institution in the city of "
+"Urgench that prepares highly qualified specialists in informatics and "
+"information technologies, postal services, radio broadcasting and "
+"television, and telecommunications. The Urgench branch was established by "
+"the resolution of the President of the Republic of Uzbekistan No. PQ-91 "
+"dated June 2, 2005, on 'Improving the system of personnel training in the "
+"field of information technologies.' In order to implement the order of the "
+"Ministry of Higher and Secondary Special Education of the Republic of "
+"Uzbekistan No. 130 dated June 14, 2005, 'On the approval of the model "
+"charter of branches of higher educational institutions,' it was established "
+"on July 23, 2005, in Urgench as a regional branch of the Tashkent "
+"University of Information Technologies, and by order No. 07-8/2015 of the "
+"Communications and Informatization Agency of Uzbekistan dated July 21, "
+"2005. From 2005 to the present day, it is called the Urgench branch of the "
+"Tashkent University of Information Technologies. More than 2600 students "
+"study at the university. Since its establishment, the university has "
+"prepared more than 30,000 highly qualified specialists. The university "
+"trains bachelors in 26 fields and masters in 32 specialties."
+
+#: templates/quartz/partners.html:251 templates/quartz/partners.html:336
+msgid "MARKAZIY OSIYO UNIVERSITETI"
+msgstr "CENTRAL ASIAN UNIVERSITY"
+
+#: templates/quartz/partners.html:252
+msgid ""
+"Markaziy Osiyo universiteti mamlakatdagi eng tez rivojlanayotgan "
+"universitetlardan biridir. Biz\n"
+"                    yuqori sifatli akademik dasturlarimiz bilan faxrlanamiz. "
+"Universitet turli bo'limlarni\n"
+"                    birlashtiradi va fanlararo fan, muhandislik, biznes, "
+"tibbiyot, stomatologiya va\n"
+"                    mehmondo'stlikni boshqarish dasturlarini ishlab chiqadi."
+msgstr ""
+"Central Asian University is one of the fastest-growing universities in the "
+"country. We are proud of our high-quality academic programs. The university "
+"unites various departments and develops interdisciplinary programs in "
+"science, engineering, business, medicine, dentistry, and hospitality "
+"management."
+
+#: templates/quartz/partners.html:261 templates/quartz/partners.html:337
+msgid "SILK ROAD INTERNATIONAL UNIVERSITY OF TOURISM AND CULTURAL HERITAGE"
+msgstr "SILK ROAD INTERNATIONAL UNIVERSITY OF TOURISM AND CULTURAL HERITAGE"
+
+#: templates/quartz/partners.html:262
+msgid ""
+"O'zbekistonning tabiiy, madaniy va tarixiy merosi boyliklarining mavjud "
+"resurslari va\n"
+"                    imkoniyatlaridan samarali foydalanish, innovatsion g'oya "
+"va texnologiyalarni joriy etish,\n"
+"                    investitsiyalarni faol jalb etish turizmni "
+"rivojlantirish uchun qulay iqtisodiy, shuningdek,\n"
+"                    tashkiliy-huquqiy shart-sharoitlarni yaratishga xizmat "
+"qilmoqda. Turizmni bosqichma-bosqich\n"
+"                    mamlakat iqtisodiyotining strategik sektoriga "
+"aylantirishni hisobga olgan holda, turizm sohasi\n"
+"                    uchun Jahon bozorida yuqori malakali va raqobatbardosh "
+"kadrlar tayyorlash, mamlakatning buyuk\n"
+"                    Ipak yo'lidagi jozibador turizm markazi sifatida qulay "
+"imidjini yaratishga qodir bo'lgan\n"
+"                    ob'ektiv ehtiyoj mavjud. xizmat ko'rsatish sohasi va "
+"mintaqalarning salohiyatini turizmga\n"
+"                    to'liq jalb qilish."
+msgstr ""
+"The effective use of existing resources and opportunities of Uzbekistan's "
+"natural, cultural, and historical heritage, the introduction of innovative "
+"ideas and technologies, and the active attraction of investments serve to "
+"create favorable economic, as well as organizational and legal conditions "
+"for the development of tourism. Taking into account the gradual "
+"transformation of tourism into a strategic sector of the country's economy, "
+"there is an objective need for training highly qualified and competitive "
+"personnel for the tourism industry in the global market, capable of "
+"creating an attractive image of the country as a tourist center on the "
+"Great Silk Road, fully engaging the service sector and the potential of the "
+"regions in tourism."
+
+#: templates/quartz/partners.html:289 templates/quartz/partners.html:338
+msgid "UNIVERSITA DEGLI STUDI DELL'AQUILA"
+msgstr "UNIVERSITA DEGLI STUDI DELL'AQUILA"
+
+#: templates/quartz/partners.html:290
+msgid ""
+"The L'aquila universiteti (Italiya: universitetlararo degli Studi "
+"dell'aquila) joylashgan\n"
+"                    jamoat tadqiqot universiteti L'aquila, Markaziy Italiya. "
+"U 1964 yilda tashkil etilgan (uning\n"
+"                    tarixi 1596 yilda boshlanadi) va to'qqizta bo'limda "
+"tashkil etilgan. Universitet ko'plab\n"
+"                    tadqiqot guruhlari bilan ilmiy-texnologik xarakterga "
+"ega. U eng yaxshi muhandislik, tibbiyot,\n"
+"                    psixologiya va fan maktablari bilan mashhur."
+msgstr ""
+"The University of L'Aquila (Italian: Università degli Studi dell'Aquila) is "
+"a public research university located in L'Aquila, Central Italy. It was "
+"founded in 1964 (its history begins in 1596) and is organized into nine "
+"departments. The university has a scientific-technological character with "
+"numerous research groups. It is famous for its excellent schools of "
+"engineering, medicine, psychology, and science."
+
+#: templates/quartz/partners.html:313 templates/quartz/partners.html:339
+msgid "VARNA MANAGEMENT UNIVERSITETI"
+msgstr "VARNA UNIVERSITY OF MANAGEMENT"
+
+#: templates/quartz/partners.html:314
+msgid ""
+"VUM 20 yil oldin turizm kolleji sifatida boshlangan va asta-sekin "
+"menejmentga ko'proq e'tibor\n"
+"                    beradigan akkreditatsiyalangan universitetga aylangan. "
+"Bugungi kunda VUM Buyuk Britaniya,\n"
+"                    Shveytsariya, Frantsiya, Norvegiya, Niderlandiya kabi "
+"mamlakatlarning universitetlari bilan\n"
+"                    hamkorlikda to'liq ingliz tilida o'qitiladigan bakalavr "
+"va magistrlarning ikki darajali\n"
+"                    dasturlarini taklif etadi. O'quv dasturlari "
+"hamkorlikdagi muassasalar bilan mos keladi va\n"
+"                    talabalar imtihonlarda bir xil yuqori standartlarga "
+"javob berishlari kerak. Ular hamkor\n"
+"                    universitetlar va VUM darajalari bilan bitiradilar."
+msgstr ""
+"VUM started 20 years ago as a tourism college and has gradually evolved "
+"into an accredited university with a greater focus on management. Today, "
+"VUM offers dual-degree bachelor's and master's programs taught entirely in "
+"English in collaboration with universities from countries such as the UK, "
+"Switzerland, France, Norway, and the Netherlands. The curricula are aligned "
+"with partner institutions, and students must meet the same high standards "
+"in exams. They graduate with degrees from both the partner universities and "
+"VUM."
+
+#: templates/quartz/partners.html:322
+msgid "YouTube video player"
+msgstr "YouTube video player"
+
+#: templates/quartz/partners.html:334
+msgid "TOSHKENTDAGI KIMYO XALQARO UNIVERSITETI"
+msgstr "KIMYO INTERNATIONAL UNIVERSITY IN TASHKENT"
+
+#: templates/quartz/partners.html:335
+msgid "TOSHKENT AXBOROT TEXNOLOGIYALARI UNIVERSITETINING URGANCH FILIALI"
+msgstr "TASHKENT UNIVERSITY OF INFORMATION TECHNOLOGIES URGENCH BRANCH"
+
+
+# --- Loyiha (project.html) ---
+#: templates/quartz/project.html:6 templates/quartz/tender.html:6
+#: templates/quartz/tender_detail.html:6 templates/quartz/training.html:6
+msgid "the QUARTZ"
+msgstr "the QUARTZ"
+
+#: templates/quartz/project.html:168
+msgid ""
+"<span class=\"info-label\">Loyiha nomi:</span> O'zbekistonda oliy ta'limni "
+"xalqarolashtirish va sifatini ta'minlash"
+msgstr ""
+"<span class=\"info-label\">Project name:</span> Internationalization and "
+"Quality Assurance of Higher Education in Uzbekistan"
+
+#: templates/quartz/project.html:172
+msgid "Loyiha logotipi:"
+msgstr "Project Logo:"
+
+#: templates/quartz/project.html:174
+msgid "QUARTZ Loyiha Logotipi"
+msgstr "QUARTZ Project Logo"
+
+#: templates/quartz/project.html:178
+msgid "Empowering Education"
+msgstr "Empowering Education"
+
+#: templates/quartz/project.html:184
+msgid "Qisqartma nomi:"
+msgstr "Acronym:"
+
+#: templates/quartz/project.html:188
+msgid "Abstrakt:"
+msgstr "Abstract:"
+
+#: templates/quartz/project.html:190
+msgid ""
+"\n"
+"            Loyihaning keng maqsadi sifatni rivojlantirish orqali "
+"O'zbekistonda OTM va mehnat bozori o'rtasidagi aloqalarni rivojlantirishdan "
+"iborat. Loyiha O'zbekiston oliy ta'lim muassasalari (OTM) malakasini "
+"oshirish. U orqali olinadi quyidagi aniq maqsadlarni amalga oshirish:\n"
+"            Sifatni ta'minlashga, raqamli savodxonlikka va ko'nikmalar.\n"
+"            Innovatsion, akademik va ma'muriy xodimlar oliy ta'limga "
+"erishish uchun zarur bo'lgan ko'nikmalar, bilimlar va munosabatlar bilan "
+"jihozlash oshirish oshirish.\n"
+"            Raqobatbardoshlik va ijtimoiy birdamlikni ta'minlash uchun "
+"sifatni ta'minlash strategiyalari, protseduralari va vositalarini ishlab "
+"chiqish.\n"
+"            Universitet boshqaruvini isloh qilish va modernizatsiya qilish, "
+"shu jumladan sifatni ta'minlash bo'linmalarini mustahkamlash va raqamli "
+"dasturlarni targ'ib qilish savodxonlik va ko'nikmalar.\n"
+"            Hamkorlar o'rtasida barqaror aloqani ta'minlash va sifatni "
+"ta'minlash tarmog'ini yaratish va qo'llab-quvvatlash orqali.\n"
+"            "
+msgstr ""
+"The broad objective of the project is to develop the links between HEIs "
+"and the labor market in Uzbekistan through quality development. The "
+"project aims to enhance the qualifications of Higher Education Institutions "
+"(HEIs) in Uzbekistan. This will be achieved through the following specific "
+"objectives: Enhancing quality assurance, digital literacy, and skills. "
+"Equipping innovative, academic, and administrative staff with the necessary "
+"skills, knowledge, and attitudes to achieve higher education enhancement. "
+"Developing quality assurance strategies, procedures, and tools to ensure "
+"competitiveness and social cohesion. Reforming and modernizing university "
+"governance, including strengthening quality assurance units and promoting "
+"digital literacy and skills. Ensuring sustainable connections among "
+"partners by creating and supporting a quality assurance network."
+
+#: templates/quartz/project.html:202
+msgid "Loyiha boshqaruvi (Koordinator):"
+msgstr "Project Management (Coordinator):"
+
+#: templates/quartz/project.html:206
+msgid "Yevropa hamkorlari:"
+msgstr "European Partners:"
+
+#: templates/quartz/project.html:214
+msgid "O'zbekiston hamkorlari:"
+msgstr "Uzbekistan Partners:"
+
+#: templates/quartz/project.html:224
+msgid ""
+"<span class=\"info-label\">Loyiha davomiyligi:</span> 3 yil - 01/04/2024 - "
+"31/03/2027"
+msgstr ""
+"<span class=\"info-label\">Project duration:</span> 3 years - 01/04/2024 - "
+"31/03/2027"
+
+#: templates/quartz/project.html:227
+msgid "<span class=\"info-label\">Loyiha tili:</span> Ingliz"
+msgstr "<span class=\"info-label\">Project language:</span> English"
+
+#: templates/quartz/project.html:230
+msgid ""
+"<span class=\"info-label\">Asosiy maqsad:</span> O'zbekistondagi "
+"universitetlarda ta'lim sifatini oshirish bo'yicha taklif ishlab chiqiladi."
+msgstr ""
+"<span class=\"info-label\">Main objective:</span> A proposal will be "
+"developed to improve the quality of education in universities in Uzbekistan."
+
+#: templates/quartz/project.html:233
+msgid "<span class=\"info-label\">Loyiha turi:</span> Milliy loyiha"
+msgstr "<span class=\"info-label\">Project type:</span> National Project"
+
+#: templates/quartz/project.html:236
+msgid "Loyiha budjeti:"
+msgstr "Project Budget:"
+
+#: templates/quartz/project.html:239
+msgid "Loyiha raqami:"
+msgstr "Project Number:"
+
+
+# --- Tender (tender.html, tender_detail.html) ---
+#: templates/quartz/tender.html:135
+msgid "Hozircha tenderlar mavjud emas."
+msgstr "No tenders available at the moment."
+
+#: templates/quartz/tender_detail.html:31
+msgid "Boshlanish vaqti:"
+msgstr "Start time:"
+
+#: templates/quartz/tender_detail.html:47
+msgid "Loyiha tavsifi"
+msgstr "Project Description"
+
+#: templates/quartz/tender_detail.html:57
+msgid "Tenderlarga"
+msgstr "To Tenders"
+
+
+# --- O'quv materiallari (training.html) ---
+#: templates/quartz/training.html:6 templates/quartz/training.html:116
+msgid "Training Materials"
+msgstr "Training Materials"
+
+#: templates/quartz/training.html:124
+msgid ""
+"\n"
+"                            Day 1 - Monday 10th of March\n"
+"                            <span class=\"day-subtitle\">PLANNING AND "
+"IMPLEMENTING A QA STRATEGY</span>\n"
+"                            "
+msgstr ""
+"Day 1 - Monday 10th of March<span class=\"day-subtitle\">PLANNING AND "
+"IMPLEMENTING A QA STRATEGY</span>"
+
+#: templates/quartz/training.html:131
+msgid "An introduction to Quality Assurance in European context"
+msgstr "An introduction to Quality Assurance in European context"
+
+#: templates/quartz/training.html:135
+msgid ""
+"Architecture of the University's Governance and Quality Assurance System"
+msgstr ""
+"Architecture of the University's Governance and Quality Assurance System"
+
+#: templates/quartz/training.html:139
+msgid "Monitoring system for policies, strategies, processes and results"
+msgstr "Monitoring system for policies, strategies, processes and results"
+
+#: templates/quartz/training.html:143
+msgid ""
+"Review of the functioning of the University's Quality Governance and "
+"Assurance system"
+msgstr ""
+"Review of the functioning of the University's Quality Governance and "
+"Assurance system"
+
+#: templates/quartz/training.html:150
+msgid ""
+"\n"
+"                            Day 2 - Tuesday 11th of March\n"
+"                            <span class=\"day-subtitle\">RESOURCES "
+"MANAGEMENT</span>\n"
+"                            "
+msgstr ""
+"Day 2 - Tuesday 11th of March<span class=\"day-subtitle\">RESOURCES "
+"MANAGEMENT</span>"
+
+#: templates/quartz/training.html:157
+msgid ""
+"Structures and infrastructures (adequacy for teaching, research and the "
+"third mission)"
+msgstr ""
+"Structures and infrastructures (adequacy for teaching, research and the "
+"third mission)"
+
+#: templates/quartz/training.html:161
+msgid "Financial resources management (planning and strategies)"
+msgstr "Financial resources management (planning and strategies)"
+
+#: templates/quartz/training.html:165
+msgid "Quality assurance system: an ecosystem of values and practices"
+msgstr "Quality assurance system: an ecosystem of values and practices"
+
+#: templates/quartz/training.html:169
+msgid ""
+"Development of a Quality and Sustainability Assurance System for the "
+"European University Alliance EULiST"
+msgstr ""
+"Development of a Quality and Sustainability Assurance System for the "
+"European University Alliance EULiST"
+
+#: templates/quartz/training.html:176
+msgid ""
+"\n"
+"                            Day 3 - Wednesday 12th of March\n"
+"                            <span class=\"day-subtitle\">QUALITY OF TEACHING "
+"AND STUDENT SERVICES</span>\n"
+"                            "
+msgstr ""
+"Day 3 - Wednesday 12th of March<span class=\"day-subtitle\">QUALITY OF "
+"TEACHING AND STUDENT SERVICES</span>"
+
+#: templates/quartz/training.html:183
+msgid "Planning the academic offer"
+msgstr "Planning the academic offer"
+
+#: templates/quartz/training.html:187
+msgid "Student-centered curricula and PhD design"
+msgstr "Student-centered curricula and PhD design"
+
+#: templates/quartz/training.html:191
+msgid "Admission, monitoring, tutoring and career development"
+msgstr "Admission, monitoring, tutoring and career development"
+
+#: templates/quartz/training.html:195
+msgid "Lifelong Learning"
+msgstr "Lifelong Learning"
+
+#: templates/quartz/training.html:202
+msgid ""
+"\n"
+"                            Day 4 - Thursday 13th of March\n"
+"                            <span class=\"day-subtitle\">QUALITY OF RESEARCH "
+"AND THIRD MISSION/SOCIAL COMMITMENT</span>\n"
+"                            "
+msgstr ""
+"Day 4 - Thursday 13th of March<span class=\"day-subtitle\">QUALITY OF "
+"RESEARCH AND THIRD MISSION/SOCIAL COMMITMENT</span>"
+
+#: templates/quartz/training.html:209
+msgid "Definition of the strategic plan of the Research Structures"
+msgstr "Definition of the strategic plan of the Research Structures"
+
+#: templates/quartz/training.html:213
+msgid "Human resources management (recruitment policies)"
+msgstr "Human resources management (recruitment policies)"
+
+#: templates/quartz/training.html:217
+msgid ""
+"Definition of assessment criteria of the results obtained by the Research "
+"Structures"
+msgstr ""
+"Definition of assessment criteria of the results obtained by the Research "
+"Structures"
+
+#: templates/quartz/training.html:221
+msgid ""
+"PhD Planning criteria and assessment - Scientific and professional growth of "
+"doctoral students"
+msgstr ""
+"PhD Planning criteria and assessment - Scientific and professional growth of "
+"doctoral students"
+
+#: templates/quartz/training.html:228
+msgid ""
+"\n"
+"                            Day 5 - Friday 14th of March\n"
+"                            <span class=\"day-subtitle\">FINAL DAY OF "
+"EXERCISES & GREETINGS</span>\n"
+"                            "
+msgstr ""
+"Day 5 - Friday 14th of March<span class=\"day-subtitle\">FINAL DAY OF "
+"EXERCISES & GREETINGS</span>"
+
+#: templates/quartz/training.html:235
+msgid "Coordination’s meeting"
+msgstr "Coordination’s meeting"
+
+#: templates/quartz/training.html:239
+msgid "Further action plan and delivery of certificates"
+msgstr "Further action plan and delivery of certificates"
+
+
+# --- Django va boshqa kutubxonalar uchun standart tarjimalar ---
+# Bu qism asosan o'zgartirishsiz qoldiriladi, chunki matnlar allaqachon ingliz tilida
+
+#: venv/lib/python3.11/site-packages/ckeditor_uploader/forms.py:6
+msgid "Search files"
+msgstr "Search files"
+
+#: venv/lib/python3.11/site-packages/ckeditor_uploader/templates/ckeditor/browse.html:5
+msgid "Select an image to embed"
+msgstr "Select an image to embed"
+
+# ... va hokazo, Django va kutubxonalarning qolgan qismi...
+# Quyida eng ko'p uchraydigan standart tarjimalar keltirilgan.
+# Agar qolganlari kerak bo'lsa, ularni ham shunday to'ldirish mumkin.
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: venv/lib/python3.11/site-packages/django/core/paginator.py:30
+msgid "…"
+msgstr "…"
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:95
+msgid "This field is required."
+msgstr "This field is required."
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:211
+msgid "Enter a valid email address."
+msgstr "Enter a valid email address."
+
+#: venv/lib/python3.11/site-packages/django/forms/widgets.py:527
+msgid "Clear"
+msgstr "Clear"
+
+#: venv/lib/python3.11/site-packages/django/forms/widgets.py:528
+msgid "Currently"
+msgstr "Currently"
+
+#: venv/lib/python3.11/site-packages/django/forms/widgets.py:529
+msgid "Change"
+msgstr "Change"
+
+# ...va hokazo.

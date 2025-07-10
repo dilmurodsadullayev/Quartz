@@ -1,0 +1,263 @@
+{% extends 'quartz/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "the QUARTZ" %} - {% trans "Training Materials" %}
+{% endblock title %}
+
+{% block content %}
+
+<style>
+    /* ----- Umumiy uslublar va o'zgaruvchilar ----- */
+    :root {
+        --primary-color: #007bff; /* Asosiy ko'k rang (sarlavhalar uchun) */
+        --primary-hover-color: #0056b3;
+        --secondary-bg: #f8f9fa;  /* Sahifa foni */
+        --table-bg: #ffffff;      /* Jadval foni */
+        --border-color: #dee2e6;  /* Ramka rangi */
+        --text-color: #212529;    /* Asosiy matn rangi */
+        --light-text-color: #6c757d; /* Och matn rangi */
+        --row-hover-bg: #f1f7ff;   /* Hover effekti uchun och ko'k fon */
+    }
+
+    body {
+        background-color: var(--secondary-bg);
+        color: var(--text-color);
+        font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+
+
+
+    #content { display: none; }
+    body.loaded #preloader { opacity: 0; visibility: hidden; transition: opacity 0.75s, visibility 0.75s; }
+    body.loaded #content { display: block; }
+
+    /* ----- Asosiy kontent va Jadval stillari ----- */
+    .training-container {
+        max-width: 1140px;
+        margin: 100px auto 40px auto; /* Navbar uchun joy */
+        padding: 0 20px;
+    }
+
+    .training-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: var(--text-color);
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    /* Jadvalning responsivligi uchun o'rovchi (wrapper) */
+    .table-responsive-wrapper {
+        overflow-x: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--border-color); /* Tashqi ramka */
+    }
+
+    .training-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 800px; /* Kichik ekranlarda scroll paydo bo'lishi uchun */
+    }
+
+    .training-table th,
+    .training-table td {
+        padding: 16px 20px;
+        text-align: left;
+        vertical-align: middle;
+        /* Yangi o'zgarish: Har bir katakcha uchun ramka */
+        border: 1px solid var(--border-color);
+    }
+
+    /* YAngi o'zgarish: Jadval sarlavhasi stillari */
+    .training-table .day-header {
+        background-color: var(--primary-color);
+        color: #ffffff; /* Sarlavha matni oq rangda */
+        font-size: 1.25rem;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .training-table .day-subtitle {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.85); /* Sarlavha ostidagi matn uchun oqish rang */
+        margin-top: 4px;
+    }
+
+    .training-table tbody tr:hover {
+        background-color: var(--row-hover-bg);
+    }
+
+    .training-table td a {
+        font-weight: 500;
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .training-table td a:hover {
+        color: var(--primary-hover-color);
+        text-decoration: underline;
+    }
+
+    .training-table td:last-child {
+        color: var(--light-text-color);
+        white-space: nowrap; /* Ism-shariflar bir qatorda turishi uchun */
+        width: 40%;
+    }
+</style>
+
+<div id="content">
+    <main class="training-container">
+        <h1 class="training-title">{% trans "Training Materials" %}</h1>
+
+        <div class="table-responsive-wrapper">
+            <table class="training-table">
+                <tbody>
+                    <!-- Day 1 -->
+                    <tr>
+                        <th colspan="2" class="day-header">
+                            {% blocktrans %}
+                            Day 1 - Monday 10th of March
+                            <span class="day-subtitle">PLANNING AND IMPLEMENTING A QA STRATEGY</span>
+                            {% endblocktrans %}
+                        </th>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/quartz_day_1_planning_and_implementing_a_quality_assurance_strategy.pdf" target="_blank">{% trans "An introduction to Quality Assurance in European context" %}</a></td>
+                        <td>Christina Armutlieva – Varna University of Management VUM</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/2_architecture_of_the_universitys_governance_and_quality_assurance.pdf" target="_blank">{% trans "Architecture of the University's Governance and Quality Assurance System" %}</a></td>
+                        <td>Christina Armutlieva – Varna University of Management VUM</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/3_monitoring_system_for_policies_strategies_processes_and_results.pdf" target="_blank">{% trans "Monitoring system for policies, strategies, processes and results" %}</a></td>
+                        <td>Christina Armutlieva – Varna University of Management VUM</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/quartz_training_tozzi-10-03-2025.pdf" target="_blank">{% trans "Review of the functioning of the University's Quality Governance and Assurance system" %}</a></td>
+                        <td>Anna Tozzi – University of L’Aquila UnivAQ</td>
+                    </tr>
+
+                    <!-- Day 2 -->
+                    <tr>
+                        <th colspan="2" class="day-header">
+                            {% blocktrans %}
+                            Day 2 - Tuesday 11th of March
+                            <span class="day-subtitle">RESOURCES MANAGEMENT</span>
+                            {% endblocktrans %}
+                        </th>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/5_structures_and_infrastructures_adequacy_for_teaching_research.pdf" target="_blank">{% trans "Structures and infrastructures (adequacy for teaching, research and the third mission)" %}</a></td>
+                        <td>Fabrizio Ciancetta – University of L’Aquila UnivAQ</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/6-financial-resources-management-planning-and-strategies.pdf" target="_blank">{% trans "Financial resources management (planning and strategies)" %}</a></td>
+                        <td>Angelo Aloisio – University of L’Aquila UnivAQ</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/7_quality.pdf" target="_blank">{% trans "Quality assurance system: an ecosystem of values and practices" %}</a></td>
+                        <td>Giuseppe Celenza – Quality Board of the University of L’Aquila UnivAQ</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/8_development.pdf" target="_blank">{% trans "Development of a Quality and Sustainability Assurance System for the European University Alliance EULiST" %}</a></td>
+                        <td>Giuseppe Celenza – University of L’Aquila UnivAQ</td>
+                    </tr>
+
+                    <!-- Day 3 -->
+                    <tr>
+                        <th colspan="2" class="day-header">
+                            {% blocktrans %}
+                            Day 3 - Wednesday 12th of March
+                            <span class="day-subtitle">QUALITY OF TEACHING AND STUDENT SERVICES</span>
+                            {% endblocktrans %}
+                        </th>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/9-planning-the-academic-offer.pdf" target="_blank">{% trans "Planning the academic offer" %}</a></td>
+                        <td>Vanina Valcheva – Varna University of Management VUM</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/student-centered-curricula-and-phd-design.pdf" target="_blank">{% trans "Student-centered curricula and PhD design" %}</a></td>
+                        <td>Vanina Valcheva – Varna University of Management VUM</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/admission-monitoring-tutoring-and-career-development.pdf" target="_blank">{% trans "Admission, monitoring, tutoring and career development" %}</a></td>
+                        <td>Vanina Valcheva – Varna University of Management VUM</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/lifelong-learning.pdf" target="_blank">{% trans "Lifelong Learning" %}</a></td>
+                        <td>Vanina Valcheva – Varna University of Management VUM</td>
+                    </tr>
+
+                    <!-- Day 4 -->
+                    <tr>
+                        <th colspan="2" class="day-header">
+                            {% blocktrans %}
+                            Day 4 - Thursday 13th of March
+                            <span class="day-subtitle">QUALITY OF RESEARCH AND THIRD MISSION/SOCIAL COMMITMENT</span>
+                            {% endblocktrans %}
+                        </th>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/13_definition_of_the_strategic_plan_of_the_research_structures.pdf" target="_blank">{% trans "Definition of the strategic plan of the Research Structures" %}</a></td>
+                        <td>Vesselin Blagoev – Varna University of Management VUM</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/14-human-resources-management-recruitment-policies.pdf" target="_blank">{% trans "Human resources management (recruitment policies)" %}</a></td>
+                        <td>Irina Petkova – Varna University of Management VUM</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/15_definition_of_assessment_criteria_of_the_results_obtained_by.pdf" target="_blank">{% trans "Definition of assessment criteria of the results obtained by the Research Structures" %}</a></td>
+                        <td>Michael Minkov – Varna University of Management VUM</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/16_phd_planning_criteria_and_assessment_scientific_and_professional.pdf" target="_blank">{% trans "PhD Planning criteria and assessment - Scientific and professional growth of doctoral students" %}</a></td>
+                        <td>Vesselin Blagoev – Varna University of Management VUM</td>
+                    </tr>
+
+                    <!-- Day 5 -->
+                    <tr>
+                        <th colspan="2" class="day-header">
+                            {% blocktrans %}
+                            Day 5 - Friday 14th of March
+                            <span class="day-subtitle">FINAL DAY OF EXERCISES & GREETINGS</span>
+                            {% endblocktrans %}
+                        </th>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/17-quartz-presentation-meeting-in-l_aquila.pdf" target="_blank">{% trans "Coordination’s meeting" %}</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://quartzuz.uz/uploads/public_files/2025-03/certific_compressed.pdf" target="_blank">{% trans "Further action plan and delivery of certificates" %}</a></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+<!-- JS qismi o'zgarishsiz qoldirildi -->
+<script>
+    // ----- Preloader script -----
+    document.addEventListener("DOMContentLoaded", function() {
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 500);
+        });
+    });
+
+    // ----- DLE variables (unchanged) -----
+    // Bu qismdagi o'zgaruvchilar DLE CMS tizimiga xos bo'lgani uchun o'zgartirilmadi
+</script>
+
+{% endblock content %}

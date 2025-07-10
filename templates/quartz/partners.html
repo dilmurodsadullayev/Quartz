@@ -1,0 +1,465 @@
+{% extends 'quartz/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}
+the QUARTZ
+{% endblock title %}
+
+{% block content %}
+
+<style>
+    /* CSS stillari o'zgarishsiz qoladi */
+    .page-header {
+        font-size: 2.2rem;
+        font-weight: 600;
+        color: #2c3e50;
+        /* To'qroq ko'k-kulrang */
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e0e0e0;
+    }
+
+    .main-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        text-align: justify;
+    }
+
+    .video-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 56.25%;
+        /* 16:9 Aspect Ratio */
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        margin: 30px 0;
+        background: linear-gradient(45deg, #2c3e50, #3498db);
+    }
+
+    .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        object-fit: cover;
+    }
+
+    .video-controls {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        border-radius: 0 0 12px 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .video-container:hover .video-controls {
+        opacity: 1;
+    }
+
+    .video-controls button {
+        background: transparent;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .video-controls button:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .video-progress {
+        flex-grow: 1;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .video-progress-filled {
+        background: #3498db;
+        height: 100%;
+        border-radius: 5px;
+        width: 0;
+    }
+
+    .video-time {
+        color: white;
+        font-size: 0.8rem;
+        min-width: 50px;
+        text-align: center;
+    }
+
+    .sidebar {
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .sidebar-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #343a40;
+        /* Bootstrap dark color */
+        margin-bottom: 20px;
+    }
+
+    .partner-list .partner-item {
+        display: block;
+        text-decoration: none;
+        color: #495057;
+        /* Bootstrap secondary text color */
+        background-color: #f8f9fa;
+        /* Ochiq kulrang fon */
+        padding: 12px 15px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        border: 1px solid #dee2e6;
+        /* Bootstrap border color */
+        transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, transform 0.2s ease;
+        font-size: 0.9rem;
+    }
+
+    .partner-list .partner-item:hover {
+        background-color: #e9ecef;
+        /* Hover uchun biroz to'qroq */
+        border-color: #ced4da;
+        transform: translateX(3px);
+    }
+
+    .partner-list .partner-item.highlighted {
+        background-color: #343a40;
+        /* Bootstrap dark color */
+        color: #ffffff;
+        font-weight: 500;
+        border-color: #343a40;
+    }
+
+    .partner-list .partner-item.highlighted:hover {
+        background-color: #23272b;
+        /* To'qroq hover */
+        border-color: #1d2124;
+    }
+
+    @media (max-width: 767.98px) {
+        .sidebar {
+            margin-top: 30px;
+        }
+
+        .page-header {
+            font-size: 1.8rem;
+        }
+    }
+</style>
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <!-- Asosiy kontent qismi -->
+        <div class="col-lg-8 main-content">
+            <div id="kiut-content" class="partner-content active">
+                <h1 class="page-header">TOSHKENT KIMYO XALQARO UNIVERSITETI</h1>
+                <p>
+                    Taklif asosiy ishlab chiquvchisi Toshkent Kimyo Xalqaro Universiteti (KIUT) bo‘lib, O‘zbekistondagi birinchi xususiy oliy ta’lim muassasasi sifatida 2018-yilda tashkil etilgan. Hozirda institut tarkibida 5 ta maktab (Muhandislik, Biznes, Pedagogika, San’at va Tibbiyot) faoliyat yuritadi va ular 28 ta ta’lim yo‘nalishi bo‘yicha o‘quv jarayonini olib boradi. KIUT Namangan va Samarqand shaharlarida 2 ta hududiy filialga ega. Talabalar soni 20 000 nafardan ortiq, professor-o‘qituvchilar soni esa 524 nafarni tashkil etadi, shulardan 43 nafari xorijiy professorlardir. KIUTda o‘quv jarayoni amaliyotga yo‘naltirilgan o‘quv rejalari asosida tashkil etilgan bo‘lib, ular sanoat korxonalari, moliyaviy tashkilotlar, davlat idoralari, tibbiyot klinikalari, maktablar va bog‘chalar kabi potensial ish beruvchilar bilan hamkorlikda ishlab chiqilgan. Talabalar ushbu tashkilotlarda amaliyot va ilmiy-tadqiqot ishlarini olib borishlari mumkin. KIUTdagi barcha o‘quv rejalari universitet professor-o‘qituvchilari tomonidan ishlab chiqiladi va davlat vakolatli organlari tomonidan litsenziyalanadi. Ta’lim tillari – o‘zbek, ingliz va rus tillaridir.
+Universitetning rasmiy veb-saytidagi loyiha havolasi: <a target="_blank" href="https://kiut.uz/en/institute/erasmus/projects/5/">https://kiut.uz/en/institute/erasmus/projects/5/</a>
+                </p>
+                <div class="video-container">
+                    <video id="kiut-video">
+                        <source src="{% static 'videos/kiut.mp4' %}" type="video/mp4">
+                        {% trans "Your browser does not support the video tag." %}
+                    </video>
+                    <div class="video-controls">
+                        <button class="play-pause"><i class="fas fa-play"></i></button>
+                        <div class="video-progress">
+                            <div class="video-progress-filled"></div>
+                        </div>
+                        <div class="video-time">0:00</div>
+                        <button class="volume"><i class="fas fa-volume-up"></i></button>
+                        <button class="fullscreen"><i class="fas fa-expand"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tuit-content" class="partner-content" style="display:none">
+                <h1 class="page-header">TOSHKENT AXBOROT TEXNOLOGIYALARI UNIVERSITETI URGANCH FILIALI</h1>
+                <p>
+                    Muhammad al-Xorazmiy nomidagi Toshkent axborot texnologiyalari universitetining Urganch filiali (UbTUIT)
+Urganch filiali – O‘zbekiston Respublikasidagi axborot va telekommunikatsiya texnologiyalari yo‘nalishida yetakchi texnik universitetning hududiy bo‘linmasi bo‘lib, 2005-yilda tashkil etilgan. Hozirda bakalavriat bosqichida 2274 dan ortiq, magistraturada esa 72 nafar talaba tahsil olmoqda. Ta’lim jarayonida 80 dan ortiq professor-o‘qituvchilar ishtirok etadi.
+
+UbTUIT tarkibida quyidagi ikki fakultet mavjud:
+
+Kompyuter muhandisligi fakulteti
+
+Telekommunikatsiya texnologiyalari fakulteti
+
+Mazkur fakultetlar quyidagi 7 ta kafedrani o‘z ichiga oladi:
+
+Axborot texnologiyalari
+
+Telekommunikatsiya muhandisligi
+
+Dasturiy injiniring
+
+Axborot xavfsizligi
+
+Raqamli ta’lim texnologiyalari
+
+Gumanitar va ijtimoiy fanlar
+
+Tabiiy va umumkasbiy fanlar
+
+2017-yildan boshlab UbTUITda o‘quv jarayoni Yevropa kredit tizimi (ECTS) asosida tashkil etilgan.
+
+UbTUIT “WP5 – Sinov va Amalga oshirish” ish paketiga rahbarlik qiladi va faoliyatida Yevropa Ittifoqi hamkor universitetlari ekspertlari tomonidan qo‘llab-quvvatlanadi. Shuningdek, loyiha veb-saytini ishlab chiqish uchun mas’ul hisoblanadi.
+
+Universitetning rasmiy veb-saytidagi loyiha havolasi: <a target="_blank" href="https://www.ubtuit.uz/activity/22">https://www.ubtuit.uz/activity/22</a>
+
+                </p>
+                <div class="video-container">
+                    <video id="tuit-video">
+                        <source src="{% static 'videos/ubtuit.mp4' %}" type="video/mp4">
+                        {% trans "Your browser does not support the video tag." %}
+                    </video>
+                    <div class="video-controls">
+                        <button class="play-pause"><i class="fas fa-play"></i></button>
+                        <div class="video-progress">
+                            <div class="video-progress-filled"></div>
+                        </div>
+                        <div class="video-time">0:00</div>
+                        <button class="volume"><i class="fas fa-volume-up"></i></button>
+                        <button class="fullscreen"><i class="fas fa-expand"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cau-content" class="partner-content" style="display:none">
+                <h1 class="page-header">MARKAZIY OSIYO UNIVERSITETI</h1>
+                <p>CAU — O‘zbekistondagi birinchi xususiy universitet bo‘lib, 2019-yil fevral oyida tashkil etilgan. Hozirda u 5 ta asosiy maktabdan iborat: San’at va Gumanitar fanlar maktabi, Biznes maktabi, Muhandislik maktabi, Huquqshunoslik maktabi hamda Tibbiyot maktabi. Bu nisbatan yangi universitet bo‘lib, barcha ta’lim bosqichlarini o‘zida mujassam etgan va talabalarga innovatsion ta’lim berishni maqsad qilgan. Universitetning asosiy vazifasi – yangi avlod shifokorlari, o‘qituvchilari, yuristlari, jurnalistlari, muhandislari, olimlari va me’morlarini tayyorlashdan iborat. Universitet intellektual ochiqlikni qadrlaydi va bilim olishga muhabbat bilan qaraydi. CAUda 200 dan ortiq o‘qituvchi faoliyat olib boradi va ta’lim jarayoni to‘liq ingliz tilida olib boriladi.
+
+CAU “WP2 – Tayyorlov va Tahlil” ish paketiga rahbarlik qiladi (VUM ko‘magida), shuningdek, “WP7 – Tarqatish va Barqarorlik” ish paketiga UNIVAQ jamoasi bilan hamkorlikda boshchilik qiladi. AKFA universiteti loyiha manfaatdor tomonlari, jumladan O‘zbekiston Oliy ta’lim vazirligi va boshqa davlat idoralari bilan aloqalarni olib boradi.
+
+Universitetning rasmiy veb-saytidagi loyiha havolasi: <a href="https://centralasian.uz/erasmuscapacity">https://centralasian.uz/erasmuscapacity</a></p>
+                <iframe width="100%" height="450"
+                        src="https://www.youtube.com/embed/HsZRh73YUyw?si=MV1ax3gh7IGkli5W"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <div id="silk-content" class="partner-content" style="display:none">
+                <h1 class="page-header">SILK ROAD INTERNATIONAL UNIVERSITY OF TOURISM AND CULTURAL HERITAGE</h1>
+                <p>Universitetning asosiy vazifasi – aholining ta’lim darajasini oshirish, mavjud bilimlarni saqlab qolish, ochiq fikrlilik, mustaqil ilmiy tadqiqot va original ijodiy faoliyatni rivojlantirish, insoniyat jamiyatining ijodiy rivojlanishini to‘liq qo‘llab-quvvatlashdir. Universitet – ijodiy ilmiy, ta’limiy, ijodiy va madaniy faoliyatni erkin amalga oshiruvchi, mustaqil davlat oliy ta’lim muassasasi bo‘lib, uning ajralmas sharti – akademik erkinlik va akademik huquqlardir. Universitet barcha turdagi ta’lim dasturlari, shu jumladan uzluksiz ta’lim dasturlarini amalga oshiradi.
+
+Professor-o‘qituvchilar soni – 102 nafar (shundan 12 nafari xorijiy professorlar), ma’muriy xodimlar – 65 nafar. Talabalar soni: bakalavriat – 2500 nafar, magistratura – 150 nafar.
+
+SRIUT “WP6 – Loyiha sifatini monitoring qilish” ish paketiga VUM universiteti ko‘magida rahbarlik qiladi.
+
+Universitetning rasmiy veb-saytidagi loyiha havolasi: <a target="_blank" href="https://univ-silkroad.uz/en/department/international-grants">https://univ-silkroad.uz/en/department/international-grants</a></p>
+                <div class="video-container">
+                    <video id="silk-video">
+                        <source src="{% static 'videos/silkroad.mp4' %}" type="video/mp4">
+                        {% trans "Your browser does not support the video tag." %}
+                    </video>
+                    <div class="video-controls">
+                        <button class="play-pause"><i class="fas fa-play"></i></button>
+                        <div class="video-progress">
+                            <div class="video-progress-filled"></div>
+                        </div>
+                        <div class="video-time">0:00</div>
+                        <button class="volume"><i class="fas fa-volume-up"></i></button>
+                        <button class="fullscreen"><i class="fas fa-expand"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="aquila-content" class="partner-content" style="display:none">
+                <h1 class="page-header">UNIVERSITA DEGLI STUDI DELL'AQUILA</h1>
+                <p>L’Aquila Universiteti (UNIVAQ)
+Hozirda L’Aquila universitetida 19 000 nafar talaba, 644 nafar professor-o‘qituvchi va tadqiqotchi hamda 504 nafar ma’muriy-texnik xodim faoliyat yuritadi. Ilmiy-tadqiqot va ta’lim ishlari 7 ta fakultet (bo‘lim) tomonidan olib boriladi va ular quyidagi yo‘nalishlarda ta’lim beradi: 30 ta bakalavriat dasturi, 36 ta magistratura dasturi, 4 ta yagonalashtirilgan magistratura dasturi, 11 ta PhD maktablari (muhandislik, biotexnologiyalar, fanlar, kompyuter fanlari, iqtisodiyot, pedagogika, gumanitar fanlar, tibbiyot, psixologiya va sport fanlari), shuningdek, bir nechta ixtisoslashtirilgan maktablar, magistr kurslari va kasbiy ta’lim kurslari mavjud.
+
+10 ta o‘quv dasturi qo‘shma yoki ko‘p diplomli ta’limni ta’minlaydi, 4 tasi esa EMJMD mukammallik darajasida tan olingan. UNIVAQ uchun ta’lim sifatini ta’minlash va fanlararo yondashuv asosiy siyosat hisoblanadi, ayniqsa, COVID pandemiyasi davrida ijtimoiy va akademik muhit tubdan o‘zgargan bir paytda bu yondashuv muhim ahamiyat kasb etdi. Universitetning pandemiyadan keyingi barqaror faoliyati 2009-yilgi zilziladan so‘ng shaharni qayta tiklash jarayonidagi tajribasi bilan uyg‘unlashgan bo‘lib, bu akademik jamoada kuchli muammoni hal qilish qobiliyati va inqirozga qarshi kurashish ko‘nikmalarini shakllantirgan.
+
+UNIVAQ barqarorlikni o‘z siyosatining asosiy yo‘nalishlaridan biri deb biladi:
+
+THE Impact 2021 reytingida: Ta’lim sifati bo‘yicha 10-o‘rin, Munosib mehnat bo‘yicha 40-o‘rin, Iqlim bo‘yicha harakatlar bo‘yicha 77-o‘rin
+
+GREENMETRIC 2022 reytingida: Butunjahon reytingida 30-o‘rin, Italiyada 5-o‘rin
+
+QUARTZ loyihasida UNIVAQ, WP1 doirasida loyiha faoliyatlarini muvofiqlashtirishda KIUT jamoasini to‘liq qo‘llab-quvvatlaydi, barcha koordinatsiya yig‘ilishlari va loyiha hisobotlarini tayyorlashda ishtirok etadi. Shuningdek, WP4 – “Ta’lim sifatini ta’minlashga oid strategik, amaliy va yordamchi jarayonlarni ishlab chiqish” ish paketiga rahbarlik qiladi.
+
+Universitetning rasmiy veb-saytidagi loyiha havolasi: <a target="_blank" href="https://www.univaq.it/include/utilities/blob.php?item=file&table=allegato&id=1009">https://www.univaq.it/include/utilities/blob.php?item=file&table=allegato&id=1009</a></p>
+                <div class="video-container">
+                    <video id="aquila-video">
+                        <source src="{% static 'videos/degli_studi.mp4' %}" type="video/mp4">
+                        {% trans "Your browser does not support the video tag." %}
+                    </video>
+                    <div class="video-controls">
+                        <button class="play-pause"><i class="fas fa-play"></i></button>
+                        <div class="video-progress">
+                            <div class="video-progress-filled"></div>
+                        </div>
+                        <div class="video-time">0:00</div>
+                        <button class="volume"><i class="fas fa-volume-up"></i></button>
+                        <button class="fullscreen"><i class="fas fa-expand"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="varna-content" class="partner-content" style="display:none">
+                <h1 class="page-header">VARNA MANAGEMENT UNIVERSITETI</h1>
+                <p>Varna Menejment Universiteti (VUM)
+Varna Menejment Universiteti – 1999-yilda tashkil etilgan va 2015-yil may oyida amaliy fanlar yo‘nalishidagi oliy ta’lim muassasasi maqomini olgan sobiq Xalqaro Universitet Kolleji (International University College)ning huquqiy vorisidir. VUMda hozirda taxminan 600 nafar talaba tahsil oladi, ularning 30% dan ortig‘i xalqaro talabalar bo‘lib, 50 dan ortiq davlatlardan, jumladan O‘zbekistondan ham kelishgan.
+
+VUM ijtimoiy fanlar sohasiga ixtisoslashgan bo‘lib, bakalavriat, magistratura va doktorantura bosqichlarida ta’lim dasturlarini taklif etadi. Barcha o‘quv dasturlari ingliz tilida olib boriladi va Yevropa Ittifoqi hamda boshqa mintaqalardagi turli universitetlar bilan hamkorlikda taqdim etiladigan ikki diplomli ta’lim bilan yakunlanadi.
+
+So‘nggi 15 yil davomida VUM xalqaro integratsiya va ta’lim hamda tadqiqotlar sifatini o‘z faoliyatining asosiy ustunlaridan biri sifatida rivojlantirib kelmoqda. 2015-yildan buyon VUM Bolgariyadagi Erasmus+ Xalqaro kredit mobilligi (ICM) dasturining eng yirik ishtirokchilaridan biri bo‘lib, hozirgacha 30 dan ortiq mamlakatlardagi 40 dan ziyod universitetlar bilan hamkorlikda 10 ta ICM loyihasini amalga oshirgan (jumladan, O‘zbekistondagi universitetlar bilan).
+
+Universitetning yuqori ta’lim sifati va chuqur xalqaro yo‘naltirilganlikka sodiqligi xalqaro miqyosda ham tan olingan. 2018–2021-yillar davomida U-Multirank VUMni talabalar mobilligiga va xalqaro yo‘nalishga eng yaxshi e’tibor qaratgan dunyodagi 25 ta universitet qatoriga kiritgan.
+
+QUARTZ loyihasida VUM MP3 – “Ta’lim sifatini ta’minlash bo‘yicha treninglar” ish paketiga rahbarlik qiladi va O‘zbekistonlik hamkorlarni boshqa ish paketlarida ham qo‘llab-quvvatlaydi. VUM O‘zbekistonlik akademik va ma’muriy xodimlar uchun sifatni ta’minlash bo‘yicha trening dasturlarini ishlab chiqadi hamda mazkur treninglarni o‘z hududida tashkil etadi.
+
+Loyihaning universitet rasmiy saytidagi havolasi: <a target="_blank" href="https://vum.bg/software-systems-and-technologies/#">https://vum.bg/software-systems-and-technologies/#</a>
+</p>
+                <iframe width="100%" height="450"
+                    src="https://www.youtube.com/embed/UAoZWuNRjRM?si=-du3wMmFUCqOGBbi" title="{% trans 'YouTube video player' %}"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Saydbar qismi -->
+        <div class="col-lg-4">
+            <aside class="sidebar">
+                <h2 class="sidebar-title">{% trans "Hamkorlar" %}</h2>
+                <div class="partner-list">
+                    <a href="#" class="partner-item highlighted" data-partner="kiut">{% trans "TOSHKENTDAGI KIMYO XALQARO UNIVERSITETI" %}</a>
+                    <a href="#" class="partner-item" data-partner="cau">{% trans "MARKAZIY OSIYO UNIVERSITETI" %}</a>
+                    <a href="#" class="partner-item" data-partner="silk">{% trans "SILK ROAD INTERNATIONAL UNIVERSITY OF TOURISM AND CULTURAL HERITAGE" %}</a>
+                    <a href="#" class="partner-item" data-partner="tuit">{% trans "TOSHKENT AXBOROT TEXNOLOGIYALARI UNIVERSITETINING URGANCH FILIALI" %}</a>
+                    <a href="#" class="partner-item" data-partner="aquila">{% trans "UNIVERSITA DEGLI STUDI DELL'AQUILA" %}</a>
+                    <a href="#" class="partner-item" data-partner="varna">{% trans "VARNA MANAGEMENT UNIVERSITETI" %}</a>
+                </div>
+            </aside>
+        </div>
+
+        <script>
+            // JavaScript kodi o'zgarishsiz qoladi
+            document.addEventListener('DOMContentLoaded', function () {
+                const partnerLinks = document.querySelectorAll('.partner-item');
+                const contents = document.querySelectorAll('.partner-content');
+
+                function initializeVideoPlayer(videoContainer) {
+                    const video = videoContainer.querySelector('video');
+                    if (!video) return () => {}; // Agar video bo'lmasa, bo'sh funksiya qaytarish
+                    const playPauseButton = videoContainer.querySelector('.play-pause');
+                    const progressBar = videoContainer.querySelector('.video-progress');
+                    const progressFilled = videoContainer.querySelector('.video-progress-filled');
+                    const timeDisplay = videoContainer.querySelector('.video-time');
+                    const volumeButton = videoContainer.querySelector('.volume');
+                    const fullscreenButton = videoContainer.querySelector('.fullscreen');
+
+                    playPauseButton.addEventListener('click', () => {
+                        if (video.paused) {
+                            video.play();
+                            playPauseButton.innerHTML = '<i class="fas fa-pause"></i>';
+                        } else {
+                            video.pause();
+                            playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
+                        }
+                    });
+
+                    video.addEventListener('timeupdate', () => {
+                        const percent = (video.currentTime / video.duration) * 100;
+                        progressFilled.style.width = `${percent}%`;
+
+                        const minutes = Math.floor(video.currentTime / 60);
+                        const seconds = Math.floor(video.currentTime % 60);
+                        timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                    });
+
+                    progressBar.addEventListener('click', (e) => {
+                        const progressTime = (e.offsetX / progressBar.offsetWidth) * video.duration;
+                        video.currentTime = progressTime;
+                    });
+
+                    volumeButton.addEventListener('click', () => {
+                        if (video.muted) {
+                            video.muted = false;
+                            volumeButton.innerHTML = '<i class="fas fa-volume-up"></i>';
+                        } else {
+                            video.muted = true;
+                            volumeButton.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                        }
+                    });
+
+                    fullscreenButton.addEventListener('click', () => {
+                        if (document.fullscreenElement) {
+                            document.exitFullscreen();
+                        } else {
+                            videoContainer.requestFullscreen().catch(err => {
+                                alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+                            });
+                        }
+                    });
+                     // To'liq ekrandan chiqish/kirishni kuzatish
+                    document.addEventListener('fullscreenchange', () => {
+                        if (!document.fullscreenElement) {
+                            fullscreenButton.innerHTML = '<i class="fas fa-expand"></i>';
+                        } else {
+                            fullscreenButton.innerHTML = '<i class="fas fa-compress"></i>';
+                        }
+                    });
+
+                    return function resetVideo() {
+                        video.pause();
+                        video.currentTime = 0;
+                        playPauseButton.innerHTML = '<i class="fas fa-play"></i>';
+                        progressFilled.style.width = '0%';
+                        timeDisplay.textContent = '0:00';
+                    };
+                }
+
+                const videoContainers = document.querySelectorAll('.video-container');
+                const resetFunctions = Array.from(videoContainers).map(container => initializeVideoPlayer(container));
+
+                partnerLinks.forEach(link => {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        partnerLinks.forEach(l => l.classList.remove('highlighted'));
+                        this.classList.add('highlighted');
+
+                        // Barcha videolarni to'xtatish va boshlang'ich holatga qaytarish
+                        resetFunctions.forEach(reset => reset());
+
+                        // Barcha iframe'larni to'xtatish (qayta yuklash orqali)
+                        document.querySelectorAll('iframe').forEach(iframe => {
+                           const originalSrc = iframe.src;
+                           iframe.src = '';
+                           iframe.src = originalSrc;
+                        });
+
+                        contents.forEach(content => content.style.display = 'none');
+
+                        const partnerId = this.getAttribute('data-partner');
+                        document.getElementById(`${partnerId}-content`).style.display = 'block';
+                    });
+                });
+            });
+        </script>
+    </div>
+</div>
+
+ {% endblock content %}

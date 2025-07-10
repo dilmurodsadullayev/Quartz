@@ -1,0 +1,3 @@
+translations = {
+    'news': "News"
+}

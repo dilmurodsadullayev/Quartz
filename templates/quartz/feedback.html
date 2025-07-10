@@ -1,0 +1,139 @@
+{% extends 'quartz/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Takliflar va Murojaatlar" %} - QUARTZ
+{% endblock title %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding-top: 100px;
+        padding-bottom: 40px;
+    }
+
+    .contact-form-section {
+        max-width: 900px;
+        margin: auto;
+        background-color: #ffffff;
+        padding: 30px 40px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-title-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .form-icon-svg {
+        width: 28px;
+        height: 20px;
+        margin-right: 12px;
+    }
+
+    .form-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #343a40;
+    }
+
+    .form-control {
+        border-radius: 6px;
+        border: 1px solid #ced4da;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .form-control:focus {
+        border-color: #545b62;
+        box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.25);
+    }
+
+    .form-control::placeholder {
+        color: #6c757d;
+        opacity: 1;
+    }
+
+    textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    .btn-submit-custom {
+        background-color: #343a40;
+        border-color: #343a40;
+        color: #ffffff;
+        font-weight: 500;
+        padding: 0.6rem 1.2rem;
+        border-radius: 6px;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-submit-custom:hover {
+        background-color: #23272b;
+        border-color: #1d2124;
+    }
+
+    .btn-submit-custom .fa-paper-plane {
+        margin-right: 8px;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 767.98px) {
+        .submit-button-wrapper {
+            text-align: left !important;
+            margin-top: 10px;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="contact-form-section">
+        <div class="form-title-container">
+            <svg class="form-icon-svg" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="0,0 12,0 8,20 -4,20" fill="#2C3E50" />
+                <polygon points="10,0 22,0 18,20 6,20" fill="#6ABD5F" />
+            </svg>
+            <h2 class="form-title mb-0">{% trans "Takliflar va Savollar Bo'yicha Murojaat" %}</h2>
+        </div>
+
+        <form action="{% url 'feedback' %}" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="contactName" placeholder="{% trans "Ismingiz" %}" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="phone" class="form-control" id="contactEmail" placeholder="{% trans "Telefon raqamingiz" %}" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" class="form-control" id="contactSubject" placeholder="{% trans "Sarlavha" %}" required>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group">
+                        <textarea name="message" class="form-control" id="contactMessage" rows="7" placeholder="{% trans "Xabar matni..." %}" required></textarea>
+                    </div>
+                    <div class="text-end submit-button-wrapper">
+                        <button type="submit" class="btn btn-submit-custom">
+                            <i class="fas fa-paper-plane"></i> {% trans "Yuborish" %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

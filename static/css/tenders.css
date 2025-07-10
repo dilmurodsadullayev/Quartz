@@ -1,0 +1,104 @@
+.tenders-container {
+    padding: 50px 0;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 767.98px) {
+    .tenders-container {
+        padding: 50px 10px;
+    }
+}
+
+.section-title {
+    color: #2c3e50;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.tender-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.tender-card:hover {
+    transform: translateY(-5px);
+}
+
+.tender-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.tender-status.active {
+    background: #4CAF50;
+    color: white;
+}
+
+.tender-status.closed {
+    background: #f44336;
+    color: white;
+}
+
+.tender-content {
+    padding: 25px;
+    padding-top: 45px;
+}
+
+.tender-content h3 {
+    color: #2c3e50;
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-right: 100px;
+    word-wrap: break-word;
+}
+
+.tender-details {
+    margin-bottom: 15px;
+}
+
+.tender-details p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.tender-details i {
+    margin-right: 8px;
+    color: #3498db;
+}
+
+.tender-description {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.tender-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.tender-btn:hover {
+    background: #2980b9;
+    color: white;
+}
+
+.tender-btn.disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+}

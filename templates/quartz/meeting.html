@@ -1,0 +1,206 @@
+{% extends 'quartz/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Uchrashuvlar" %} - QUARTZ
+{% endblock title %}
+
+{% block content %}
+<style>
+    body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+        background-color: #f8f9fa;
+    }
+
+    .section-header {
+        position: relative;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .section-header h1 {
+        color: #2c3e50;
+    }
+
+    .section-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .section-divider span {
+        height: 2px;
+        width: 50px;
+        background: linear-gradient(to right, #3498db, #2c3e50);
+        margin: 0 10px;
+    }
+
+    .section-divider i {
+        color: #3498db;
+        font-size: 1.2rem;
+    }
+
+    .card-custom-icon {
+        width: 30px;
+        height: 20px;
+        margin-right: 0.5rem;
+    }
+
+    .card-title-custom {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .card-text-custom {
+        font-size: 0.875rem;
+        color: #555;
+        display: flex;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .card-text-custom i {
+        margin-top: 2px;
+    }
+
+    .meeting-card {
+        perspective: 1000px;
+        height: 300px;
+        margin-bottom: 30px;
+    }
+
+    .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+    }
+
+    .meeting-card:hover .card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .card-front {
+        background-color: #ffffff;
+        color: #2c3e50;
+    }
+
+    .card-back {
+        background: linear-gradient(135deg, #3498db, #2c3e50);
+        color: white;
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .card-front .card-body {
+        padding: 20px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .card-back .card-title {
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .card-back .card-text {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .btn-detail {
+        background-color: #ffffff;
+        color: #3498db;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 500;
+    }
+
+    .btn-detail:hover {
+        background-color: #f1f1f1;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        color: #2980b9;
+    }
+</style>
+
+<section class="meetings-section">
+    <div class="container mt-5">
+        <!-- Section Header -->
+
+        <div class="row gy-4">
+            {% for meeting in meetings %}
+            <div class="col-lg-4 col-md-6">
+                <div class="meeting-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3 justify-content-center">
+                                    <svg class="card-custom-icon" viewBox="0 0 30 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+                                        <path d="M0 0 L10 0 L15 20 L5 20 Z" fill="#FFC107" />
+                                        <path d="M12 0 L22 0 L27 20 L17 20 Z" fill="#17A2B8" />
+                                    </svg>
+                                    <h5 class="card-title-custom mb-0">{{ meeting.title|truncatechars:50 }}</h5>
+                                </div>
+                                <div class="card-info mt-3">
+                                    <p class="card-text-custom mb-2">
+                                        <i class="fas fa-calendar-alt me-2 text-primary"></i>
+                                        <span class="fw-semibold">{% trans "Vaqti:" %}</span> {{ meeting.start_time|date:"d M, Y" }}
+                                    </p>
+                                    <p class="card-text-custom mb-0">
+                                        <i class="fas fa-map-marker-alt me-2 text-primary"></i>
+                                        <span class="fw-semibold">{% trans "O'tkazilish joyi:" %}</span> {{ meeting.location }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ meeting.title }}</h5>
+                                <p class="card-text">{{ meeting.description|truncatewords:20 }}</p>
+                                <a href="{% url 'meeting_detail' meeting_id=meeting.id %}" class="btn btn-detail mt-3">{% trans "Batafsil ma'lumot" %}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <h3 class="text-muted">{% trans "Hozircha uchrashuvlar mavjud emas." %}</h3>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

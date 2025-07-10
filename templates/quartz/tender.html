@@ -1,0 +1,140 @@
+{% extends 'quartz/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "the QUARTZ" %}
+{% endblock title %}
+
+{% block content %}
+
+<style>
+    body {
+        background-color: #f0f2f5;
+        /* Ochiq kulrang fon */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding-top: 100px;
+    }
+
+    .news-card {
+        border: none;
+        /* Bootstrap standart chegarasini olib tashlash */
+        border-radius: 12px;
+        /* Yumshoqroq burchaklar */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        /* Aniqroq soya */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        /* Kartochkalar balandligini bir xil qilish uchun */
+    }
+
+    .news-card:hover {
+        transform: translateY(-5px);
+        /* Sichqoncha borganda biroz ko'tarilish efekti */
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .news-card .card-img-top {
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        max-height: 200px;
+        /* Rasm balandligini cheklash */
+        object-fit: cover;
+        /* Rasm moslashuvi */
+    }
+
+    .news-card .card-body {
+        padding: 1.5rem;
+        /* Ichki bo'shliqni ko'paytirish */
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        /* Body qismini kengaytirish */
+    }
+
+    .news-card .card-title {
+        font-size: 1.1rem;
+        /* Sarlavha o'lchami */
+        font-weight: 600;
+        /* Qalinroq shrift */
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+
+    .news-card .card-date {
+        font-size: 0.85rem;
+        color: #6c757d;
+        /* Kulrang matn */
+        margin-bottom: 0.75rem;
+    }
+
+    .news-card .card-text-description {
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 1.25rem;
+        flex-grow: 1;
+        /* Matn qismini kengaytirish */
+    }
+
+    .news-card .btn-custom-details {
+        background-color: #343a40;
+        /* To'q kulrang tugma foni */
+        border-color: #343a40;
+        color: #ffffff;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        text-transform: uppercase;
+        /* Katta harflar */
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+        align-self: flex-start;
+        /* Tugmani chapga joylashtirish */
+        margin-top: auto;
+        /* Tugmani pastga surish */
+    }
+
+    .news-card .btn-custom-details:hover {
+        background-color: #23272b;
+        /* To'qroq fon hoverda */
+        border-color: #1d2124;
+    }
+
+    /* Sizning kodingizda tender-card ishlatilgan, lekin stillar news-card uchun yozilgan.
+       Men HTML'ni stillarga moslashtirdim.
+    */
+</style>
+
+<div class="container">
+    <div class="row">
+        {% for tender in tenders %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card news-card">
+                {# Agar rasm bo'lsa, bu yerga qo'yish mumkin: #}
+                {# <img src="{{ tender.image.url }}" class="card-img-top" alt="{{ tender.title }}"> #}
+                <div class="card-body">
+                    <h5 class="card-title">{{ tender.title }}</h5>
+                    <p class="card-date">
+                        <i class="far fa-calendar-alt"></i>
+                        {{ tender.end_time }}
+                    </p>
+                    <p class="card-text-description">{{ tender.description|truncatewords:20 }}</p>
+                    <a href="{% url 'tender_detail' tender_id=tender.id %}" class="btn btn-custom-details">
+                        {% trans "Batafsil" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p>{% trans "Hozircha tenderlar mavjud emas." %}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

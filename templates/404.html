@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Sahifa Topilmadi</title>
+</head>
+<body>
+    
+
+<style>
+    .error-404-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 70vh; /* Sahifaning ko'p qismini egallashi uchun */
+        text-align: center;
+        padding: 40px 15px;
+        background-color: #f4f7f6; /* Bosh sahifaga o'xshash fon */
+    }
+
+    .error-container {
+        max-width: 600px;
+    }
+
+    .error-code {
+        font-size: 10rem;
+        font-weight: 700;
+        color: #2c3e50;
+        text-shadow: 4px 4px 0px #3498db;
+        line-height: 1;
+        margin-bottom: 20px;
+    }
+
+    /* Bosh sahifadagi sarlavha uslubini 404 uchun moslashtirish */
+    .error-title-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .error-title {
+        text-align: center;
+        color: #fff;
+        font-size: 2rem;
+        font-weight: bold;
+        padding: 15px 30px;
+        margin: 0;
+        display: inline-block;
+        position: relative;
+        background: linear-gradient(135deg, #3498db, #2c3e50);
+        clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .error-description {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 30px;
+    }
+
+    /* Bosh sahifadagi "Barcha yangiliklar" tugmasi uslubini qayta ishlatish */
+    .home-button {
+        display: inline-flex;
+        align-items: center;
+        padding: 12px 25px;
+        background: linear-gradient(135deg, #3498db, #2c3e50);
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .home-button .button-text {
+        margin-right: 10px;
+    }
+
+    .home-button .button-icon i {
+        transition: transform 0.3s ease;
+    }
+
+    .home-button:hover {
+        color: #fff;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .home-button:hover .button-icon i {
+        transform: translateX(5px);
+    }
+
+</style>
+
+<section class="error-404-section">
+    <div class="container error-container">
+        <div class="error-code">404</div>
+
+        <div class="section-title" style="margin-bottom: 30px; position: relative;">
+            <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                <div style="flex: 1; height: 2px; background: linear-gradient(90deg, transparent, #3498db);"></div>
+                <h2 style="
+                                text-align: center;
+                                color: #fff;
+                                font-size: 2.2rem;
+                                font-weight: bold;
+                                padding: 15px 30px;
+                                margin: 0 20px;
+                                display: inline-block;
+                                position: relative;
+                                background: linear-gradient(135deg, #3498db, #2c3e50);
+                                clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+                                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                            ">Sahifa Topilmadi</h2>
+                <div style="flex: 1; height: 2px; background: linear-gradient(90deg, #3498db, transparent);"></div>
+            </div>
+        </div>
+
+        <p class="error-description">
+            trans "Kechirasiz, siz qidirayotgan sahifa mavjud emas, o'chirilgan yoki manzili o'zgartirilgan.
+        </p>
+
+        <a href="/" class="home-button">
+            <span class="button-text">Bosh sahifaga qaytish</span>
+            <span class="button-icon">
+                <i class="fas fa-home"></i>
+            </span>
+        </a>
+    </div>
+</section>
+</body>
+</html>

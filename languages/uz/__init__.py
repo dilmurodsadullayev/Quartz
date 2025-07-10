@@ -1,0 +1,1 @@
+from .index import translations as index_translations

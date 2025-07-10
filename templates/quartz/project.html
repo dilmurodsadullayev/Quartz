@@ -1,0 +1,255 @@
+{% extends 'quartz/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "the QUARTZ" %}
+{% endblock title %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding-top: 80px;
+        background-color: #f8f9fa;
+        /* Light neutral background */
+        color: #333;
+    }
+
+    .page-container {
+        max-width: 850px;
+        margin: 20px auto;
+        background-color: #ffffff;
+        padding: 25px 40px;
+        /* More horizontal padding */
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .main-title {
+        font-size: 2.2em;
+        /* Large main title */
+        font-weight: 600;
+        color: #212529;
+        /* Darker, almost black */
+        text-align: left;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .info-section {
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #e9ecef;
+        /* Lighter separator lines */
+    }
+
+    .info-section:last-of-type {
+        /* Corrected to target last info-section */
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .info-label {
+        font-weight: bold;
+        color: #0056b3;
+        /* Specific blue from image */
+        margin-right: 8px;
+    }
+
+    .info-section p {
+        margin-top: 0;
+        margin-bottom: 8px;
+        /* Default paragraph spacing in a section */
+        color: #495057;
+        /* Slightly softer text color */
+    }
+
+    .info-section p:last-child {
+        margin-bottom: 0;
+    }
+
+    .logo-wrapper {
+        margin-top: 10px;
+    }
+
+    .logo-image {
+        max-width: 200px;
+        /* Adjust as needed */
+        height: auto;
+        display: block;
+        /* Or inline-block */
+    }
+
+    /* Fallback text styling for logo if image fails or not provided */
+    .logo-placeholder-text {
+        margin-top: 5px;
+        padding: 5px 0;
+    }
+
+    .logo-placeholder-text .quartz-text {
+        font-size: 28px;
+        font-weight: bold;
+        color: #0056b3;
+        /* Blue similar to info-label */
+        display: block;
+    }
+
+    .logo-placeholder-text .tagline-text {
+        font-size: 11px;
+        color: #e85d04;
+        /* Orange/reddish color */
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: block;
+    }
+
+
+    .abstract-section .info-label {
+        /* Label "Abstrakt:" */
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .abstract-main-text {
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .bullet-list {
+        list-style-type: disc;
+        margin-left: 0;
+        padding-left: 25px;
+        /* Indentation for bullets */
+        color: #495057;
+    }
+
+    .bullet-list li {
+        margin-bottom: 8px;
+    }
+
+    .location-text {
+        font-style: italic;
+        color: #6c757d;
+        /* Gray for locations */
+    }
+
+    .partners-group-title {
+        font-size: 1.1em;
+        /* Slightly larger or more prominent */
+        font-weight: bold;
+        color: #343a40;
+        /* Dark gray, not blue */
+        margin-top: 0;
+        margin-bottom: 12px;
+    }
+
+    .partners-list {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 0;
+        color: #495057;
+    }
+
+    .partners-list li {
+        margin-bottom: 8px;
+        /* Optional: padding-left: 10px; if you want a slight indent */
+    }
+</style>
+
+<div class="page-container">
+    <h1 class="main-title">{% trans "Loyiha haqida" %}</h1>
+
+    <div class="info-section">
+        <p>{% blocktrans %}<span class="info-label">Loyiha nomi:</span> O'zbekistonda oliy ta'limni xalqarolashtirish va sifatini ta'minlash{% endblocktrans %}</p>
+    </div>
+
+    <div class="info-section">
+        <p><span class="info-label">{% trans "Loyiha logotipi:" %}</span></p>
+        <div class="logo-wrapper">
+            <img src="{% static 'img/eu_logo.png' %}" alt="{% trans 'QUARTZ Loyiha Logotipi' %}" class="logo-image"
+                onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block';">
+            <div id="logoFallback" class="logo-placeholder-text" style="display:none;">
+                <span class="quartz-text">QUARTZ</span>
+                <span class="tagline-text">{% trans "Empowering Education" %}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <p><span class="info-label">{% trans "Qisqartma nomi:" %}</span> QUARTZ</p>
+    </div>
+
+    <div class="info-section abstract-section">
+        <p><span class="info-label">{% trans "Abstrakt:" %}</span></p>
+        <p class="abstract-main-text">
+            {% blocktrans %}
+            Loyihaning keng maqsadi sifatni rivojlantirish orqali O'zbekistonda OTM va mehnat bozori o'rtasidagi aloqalarni rivojlantirishdan iborat. Loyiha O'zbekiston oliy ta'lim muassasalari (OTM) malakasini oshirish. U orqali olinadi quyidagi aniq maqsadlarni amalga oshirish:
+            Sifatni ta'minlashga, raqamli savodxonlikka va ko'nikmalar.
+            Innovatsion, akademik va ma'muriy xodimlar oliy ta'limga erishish uchun zarur bo'lgan ko'nikmalar, bilimlar va munosabatlar bilan jihozlash oshirish oshirish.
+            Raqobatbardoshlik va ijtimoiy birdamlikni ta'minlash uchun sifatni ta'minlash strategiyalari, protseduralari va vositalarini ishlab chiqish.
+            Universitet boshqaruvini isloh qilish va modernizatsiya qilish, shu jumladan sifatni ta'minlash bo'linmalarini mustahkamlash va raqamli dasturlarni targ'ib qilish savodxonlik va ko'nikmalar.
+            Hamkorlar o'rtasida barqaror aloqani ta'minlash va sifatni ta'minlash tarmog'ini yaratish va qo'llab-quvvatlash orqali.
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <div class="info-section">
+        <p><span class="info-label">{% trans "Loyiha boshqaruvi (Koordinator):" %}</span> TASHKENT KIMYO INTERNATIONAL UNIVERSITY (Tashkent, Uzbekistan)</p>
+    </div>
+
+    <div class="info-section partners-section">
+        <h3 class="partners-group-title">{% trans "Yevropa hamkorlari:" %}</h3>
+        <ul class="partners-list">
+            <li>UNIVERSITA DEGLI STUDI DELL'AQUILA (L'aquila, Italy)</li>
+            <li>VARNA MENEGMENT UNIVERSITETI (Varna, Bulgaria)</li>
+        </ul>
+    </div>
+
+    <div class="info-section partners-section">
+        <h3 class="partners-group-title">{% trans "O'zbekiston hamkorlari:" %}</h3>
+        <ul class="partners-list">
+            <li>TASHKENT KIMYO INTERNATIONAL UNIVERSITY (Tashkent, Uzbekistan)</li>
+            <li>URGENCH BRANCH OF TASHKENT UNIVERSITY OF INFORMATION TECHNOLOGIES NAMED AFTER MUHAMMAD AL-KHWARIZMI (Urganch, Uzbekistan)</li>
+            <li>CENTRAL ASIAN UNIVERSITY (Tashkent, Uzbekistan)</li>
+            <li>SILK ROAD INTERNATIONAL UNIVERSITY OF TOURISM AND CULTURAL HERITAGE (Samarkand, Uzbekistan)</li>
+        </ul>
+    </div>
+
+    <div class="info-section">
+        <p>{% blocktrans %}<span class="info-label">Loyiha davomiyligi:</span> 3 yil - 01/04/2024 - 31/03/2027{% endblocktrans %}</p>
+    </div>
+    <div class="info-section">
+        <p>{% blocktrans %}<span class="info-label">Loyiha tili:</span> Ingliz{% endblocktrans %}</p>
+    </div>
+    <div class="info-section">
+        <p>{% blocktrans %}<span class="info-label">Asosiy maqsad:</span> O'zbekistondagi universitetlarda ta'lim sifatini oshirish bo'yicha taklif ishlab chiqiladi.{% endblocktrans %}</p>
+    </div>
+    <div class="info-section">
+        <p>{% blocktrans %}<span class="info-label">Loyiha turi:</span> Milliy loyiha{% endblocktrans %}</p>
+    </div>
+    <div class="info-section">
+        <p><span class="info-label">{% trans "Loyiha budjeti:" %}</span> 308 137.00 Euro</p>
+    </div>
+    <div class="info-section"> <!-- This is the last section -->
+        <p><span class="info-label">{% trans "Loyiha raqami:" %}</span> 101127171</p>
+    </div>
+</div>
+
+<script>
+    // Small script to ensure the logo fallback is shown if the image source is still the placeholder
+    // or if it truly fails to load (onerror handles the latter).
+    document.addEventListener('DOMContentLoaded', function () {
+        const logoImage = document.querySelector('.logo-image');
+        if (logoImage && logoImage.getAttribute('src') === 'REPLACE_WITH_ACTUAL_LOGO_URL.png') {
+            logoImage.style.display = 'none';
+            document.getElementById('logoFallback').style.display = 'block';
+        }
+    });
+</script>
+
+{% endblock content %}

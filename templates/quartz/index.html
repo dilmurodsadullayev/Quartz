@@ -1,0 +1,237 @@
+{% extends 'quartz/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "QUARTZ Loyihasi - Bosh sahifa" %}
+{% endblock title %}
+
+{% block content %}
+
+<style>
+    .image-title {
+    position: absolute;
+    top: 10px; /* yuqoridan joylashishi */
+    left: 10px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6); /* qora shaffof fon */
+    padding: 6px 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    z-index: 2;
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+</style>
+<section class="hero-section">
+    <div id="customImageSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#customImageSlider" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#customImageSlider" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#customImageSlider" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+
+        <!-- Slides -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'img/sliderimg/rasim1.png' %}" class="d-block w-100" alt="{% trans 'Slayder rasmi 1' %}">
+                <div class="carousel-caption custom-caption">
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="{% static 'img/sliderimg/rasim2.png' %}" class="d-block w-100" alt="{% trans 'Slayder rasmi 2' %}">
+                <div class="carousel-caption custom-caption">
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="{% static 'img/sliderimg/rasim3.png' %}" class="d-block w-100" alt="{% trans 'Slayder rasmi 3' %}">
+                <div class="carousel-caption custom-caption">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Yangiliklar Bo'limi -->
+    <div class="news-container">
+        <div class="section-title" style="margin-bottom: 40px; position: relative;">
+            <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                <div style="flex: 1; height: 2px; background: linear-gradient(90deg, transparent, #3498db);"></div>
+                <h2 style="
+                                text-align: center;
+                                color: #fff;
+                                font-size: 2.5rem;
+                                font-weight: bold;
+                                padding: 15px 30px;
+                                margin: 0 20px;
+                                display: inline-block;
+                                position: relative;
+                                background: linear-gradient(135deg, #3498db, #2c3e50);
+                                clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+                                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                            ">{% trans "Yangiliklar" %}</h2>
+                <div style="flex: 1; height: 2px; background: linear-gradient(90deg, #3498db, transparent);"></div>
+            </div>
+        </div>
+        <div class="row">
+            {% for new in news %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="news-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <img src="{{ new.cover_image.url }}" alt="{{ new.title }}">
+                                <h5 class="image-title">{{ new.title }}</h5>
+                            </div>
+                            <div class="card-back">
+                                <h3>{{ new.title }}</h3>
+                                <p class="news-date">{{ new.created_at|date:"d M, Y" }}</p>
+                                <p class="news-excerpt">
+                                    {{ new.description|truncatewords:20 }}
+                                </p>
+                                <a href="{% url 'news_detail' news_id=new.id %}" class="btn-details">{% trans "Batafsil" %}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'news' %}" class="view-all-news">
+                <span class="button-text">{% trans "Barcha yangiliklar" %}</span>
+                <span class="button-icon">
+                    <i class="fas fa-arrow-right"></i>
+                </span>
+                <div class="button-effect"></div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Tenderlar Bo'limi -->
+    <div class="container tenders-container">
+        <div class="section-title" style="margin-bottom: 40px; position: relative;">
+            <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                <div style="flex: 1; height: 2px; background: linear-gradient(90deg, transparent, #3498db);"></div>
+                <h2 style="
+                                text-align: center;
+                                color: #fff;
+                                font-size: 2.5rem;
+                                font-weight: bold;
+                                padding: 15px 30px;
+                                margin: 0 20px;
+                                display: inline-block;
+                                position: relative;
+                                background: linear-gradient(135deg, #3498db, #2c3e50);
+                                clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+                                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                            ">{% trans "Tenderlar" %}</h2>
+                <div style="flex: 1; height: 2px; background: linear-gradient(90deg, #3498db, transparent);"></div>
+            </div>
+        </div>
+        <div class="row">
+            {% for tender in tenders %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="tender-card">
+                    <div class="tender-status {{ tender.status }}">
+                        {% if tender.status == 'active' %}
+                            {% trans "Faol" %}
+                        {% else %}
+                            {% trans "Yopilgan" %}
+                        {% endif %}
+                    </div>
+                    <div class="tender-content">
+                        <h3>{{ tender.title }}</h3>
+                        <div class="tender-details">
+                            <p class="tender-date">
+                                <i class="far fa-calendar-alt"></i>
+                                {% trans "Tugash vaqti:" %} {{ tender.end_time|date:"d M, Y H:i" }}
+                            </p>
+                        </div>
+                        <p class="tender-description">{{ tender.description|truncatewords:20 }}</p>
+                        <a href="{% url 'tender_detail' tender_id=tender.id %}" class="tender-btn">
+                            {% trans "Batafsil" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'tender' %}" class="view-all-news">
+                <span class="button-text">{% trans "Barcha tenderlar" %}</span>
+                <span class="button-icon">
+                    <i class="fas fa-arrow-right"></i>
+                </span>
+                <div class="button-effect"></div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Hamkorlar Bo'limi -->
+    <div class="container partners-container">
+        <div class="section-title" style="margin-bottom: 40px; position: relative;">
+            <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                <div style="flex: 1; height: 2px; background: linear-gradient(90deg, transparent, #3498db);"></div>
+                <h2 style="
+                                text-align: center;
+                                color: #fff;
+                                font-size: 2.5rem;
+                                font-weight: bold;
+                                padding: 15px 30px;
+                                margin: 0 20px;
+                                display: inline-block;
+                                position: relative;
+                                background: linear-gradient(135deg, #3498db, #2c3e50);
+                                clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+                                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                            ">{% trans "Hamkorlar" %}</h2>
+                <div style="flex: 1; height: 2px; background: linear-gradient(90deg, #3498db, transparent);"></div>
+            </div>
+        </div>
+        <div class="partners-slider">
+            <div class="partners-track">
+                <!-- Hamkor kartalari -->
+                <div class="partner-card">
+                    <img src="{% static 'img/partners/tuit.png' %}" alt="{% trans 'TUIT logotipi' %}" class="partner-logo">
+                </div>
+                <div class="partner-card">
+                    <img src="{% static 'img/partners/m.png' %}" alt="{% trans 'M logotipi' %}" class="partner-logo">
+                </div>
+                <div class="partner-card">
+                    <img src="{% static 'img/partners/kiut.png' %}" alt="{% trans 'KIUT logotipi' %}" class="partner-logo">
+                </div>
+                <div class="partner-card">
+                    <img src="{% static 'img/partners/gilkroad.png' %}" alt="{% trans 'Silkroad logotipi' %}" class="partner-logo">
+                </div>
+                <div class="partner-card">
+                    <img src="{% static 'img/partners/aqiulae.png' %}" alt="{% trans 'Aquilae logotipi' %}" class="partner-logo">
+                </div>
+                <!-- Dublikatlar -->
+                <div class="partner-card">
+                    <img src="{% static 'img/partners/tuit.png' %}" alt="{% trans 'TUIT logotipi' %}" class="partner-logo">
+                </div>
+                <div class="partner-card">
+                    <img src="{% static 'img/partners/m.png' %}" alt="{% trans 'M logotipi' %}" class="partner-logo">
+                </div>
+                <div class="partner-card">
+                    <img src="{% static 'img/partners/kiut.png' %}" alt="{% trans 'KIUT logotipi' %}" class="partner-logo">
+                </div>
+                <div class="partner-card">
+                    <img src="{% static 'img/partners/gilkroad.png' %}" alt="{% trans 'Silkroad logotipi' %}" class="partner-logo">
+                </div>
+                <div class="partner-card">
+                    <img src="{% static 'img/partners/aqiulae.png' %}" alt="{% trans 'Aquilae logotipi' %}" class="partner-logo">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

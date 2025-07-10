@@ -1,0 +1,206 @@
+{% extends 'quartz/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{{ tender.title }} - {% trans "the QUARTZ" %}
+{% endblock title %}
+
+{% block content %}
+<div class="container tender-details-container">
+    <div class="tender-details-card">
+        <div class="tender-header">
+            {# Yaxshilanish: Tender holatini dinamik ko'rsatish #}
+            {# View'dan `tender.is_active` kabi boolean qiymat keladi deb taxmin qilinadi #}
+            {% if tender.is_active %}
+                <div class="tender-status active">
+                    {% trans "Faol" %}
+                </div>
+            {% else %}
+                <div class="tender-status closed">
+                    {% trans "Yopilgan" %}
+                </div>
+            {% endif %}
+            <h1 class="tender-title">{{ tender.title }}</h1>
+        </div>
+
+        <div class="tender-info">
+            <div class="info-item">
+                <i class="far fa-calendar-alt"></i>
+                <div class="info-content">
+                    <span class="info-label">{% trans "Boshlanish vaqti:" %}</span>
+                    <span class="info-value">{{ tender.start_time }}</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="far fa-calendar-alt"></i>
+                <div class="info-content">
+                    <span class="info-label">{% trans "Tugash vaqti:" %}</span>
+                    <span class="info-value">{{ tender.end_time }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tender-description">
+            {# Yaxshilanish: Tavsif uchun sarlavha qo'shildi #}
+            <h2>{% trans "Loyiha tavsifi" %}</h2>
+            <div class="description-content">
+                {# Yaxshilanish: `safe` filteri rich-text kontentni to'g'ri ko'rsatadi #}
+                {{ tender.content|safe }}
+            </div>
+        </div>
+
+        <div class="tender-actions">
+            <a href="{% url 'tender' %}" class="btn-back">
+                <i class="fas fa-arrow-left"></i>
+                {% trans "Tenderlarga" %}
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.tender-details-container {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 100px auto 40px auto; /* navbar uchun joy */
+}
+
+.tender-details-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 30px;
+}
+
+.tender-header {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.tender-status {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.tender-status.active {
+    background-color: #d4edda; /* yashil rangning ochrog'i */
+    color: #155724; /* to'q yashil matn */
+    border: 1px solid #c3e6cb;
+}
+
+.tender-status.closed {
+    background-color: #f8d7da; /* qizil rangning ochrog'i */
+    color: #721c24; /* to'q qizil matn */
+    border: 1px solid #f5c6cb;
+}
+
+.tender-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.tender-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-item i {
+    font-size: 1.5rem;
+    color: #3498db;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-label {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.info-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.tender-description {
+    margin-bottom: 30px;
+}
+
+.tender-description h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.description-content {
+    line-height: 1.7;
+    color: #444;
+    font-size: 1.1rem;
+}
+
+.tender-actions {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-back i {
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .tender-title {
+        font-size: 2rem;
+    }
+
+    .tender-info {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+{% endblock content %}

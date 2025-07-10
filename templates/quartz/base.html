@@ -1,0 +1,197 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}QUARTZ Loyihasi{% endblock title %}</title>
+    <link href="{% static 'favicon.png' %}" rel="shortcut icon">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tenders.css' %}">
+    <link rel="stylesheet" href="{% static 'css/button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+    <link rel="stylesheet" href="{% static 'css/divider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/partners.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="{% static 'css/slider-custom.css' %}">
+</head>
+
+<body>
+    <!-- Loader -->
+    <div class="loader-container">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-text">QUARTZ</div>
+            <div class="loader-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="sticky-wrapper" data-aos="slide-down" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000"
+        data-aos-easing="ease-in-out" data-aos-mirror="true" data-aos-once="true"
+        data-aos-anchor-placement="top-center">
+
+        <nav class="navbar navbar-expand-lg custom-navbar">
+            <div class="container-fluid nav-container-custom">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <img src="{% static 'img/eu_logo.png' %}" alt="QUARTZ Logo" class="navbar-logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavContent" aria-controls="navbarNavContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="main-nav-content">
+                    <div class="collapse navbar-collapse" id="navbarNavContent">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item"><a class="nav-link" href="{% url 'project' %}">{% trans "Loyiha haqida" %}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'news' %}">{% trans "Yangiliklar" %}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'activity' %}">{% trans "Faoliyat" %}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'meeting' %}">{% trans "Uchrashuvlar" %}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'tender' %}">{% trans "Tender" %}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">{% trans "Hamkorlar" %}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'feedback' %}">{% trans "Takliflar" %}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'training' %}">{% trans "Hujjatlar" %}</a></li>
+                        </ul>
+                        <div class="right-nav-items">
+                            <a class="nav-link lms-button" target="_blank" href="http://lms.quartzuz.uz/login/index.php">{% trans "LMS" %}</a>
+
+                            <!-- DINAMIK TIL ALMASHTIRISH BLOKI -->
+                            <div class="language-switcher dropdown">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+
+                                <button class="dropdown-toggle lang-btn" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {% if LANGUAGE_CODE == 'uz' %}
+                                        <img src="{% static 'img/flag_uz.png' %}" alt="{% trans "O'zbekcha" %}" class="lang-flag">
+                                        <span>{% trans "O'zbek" %}</span>
+                                    {% elif LANGUAGE_CODE == 'en' %}
+                                        <img src="{% static 'img/flag_uk.png' %}" alt="{% trans "English" %}" class="lang-flag">
+                                        <span>{% trans "English" %}</span>
+                                    {% endif %}
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                                    {% for lang in languages %}
+                                    <li>
+                                        <a class="dropdown-item {% if lang.code == LANGUAGE_CODE %}active{% endif %}" href="#" onclick="setLanguage('{{ lang.code }}'); return false;">
+                                            {% if lang.code == 'uz' %}
+                                                <img src="{% static 'img/flag_uz.png' %}" alt="{% trans "O'zbekcha" %}" class="lang-flag">
+                                            {% elif lang.code == 'en' %}
+                                                <img src="{% static 'img/flag_uk.png' %}" alt="{% trans "English" %}" class="lang-flag">
+                                            {% endif %}
+                                            <span>{{ lang.name_local|capfirst }}</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+
+                                <form id="language-form" action="{% url 'set_language' %}" method="post" style="display: none;">
+                                    {% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                                    <input name="language" id="language-input" type="hidden">
+                                </form>
+                            </div>
+                            <!-- TIL ALMASHTIRISH BLOKI TUGADI -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    {% block content %}
+    {% endblock content %}
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <h4>QUARTZ</h4>
+                    <p>{% blocktrans %}Ushbu loyiha Evropa komissiyasi ko'magida moliyalashtirildi. Ushbu loyiha veb-sayti faqat muallifning fikrlarini aks ettiradi va komissiya undagi ma'lumotlardan foydalanish uchun javobgar bo'lmaydi. Oliy ta'lim sohasidagi salohiyatni oshirish loyihalari.{% endblocktrans %}</p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <h4>{% trans "Manzil" %}</h4>
+                    <p>{% blocktrans %}<strong>Manzil:</strong> 156, Shota Rustaveli ko'chasi, Toshkent, O'zbekiston{% endblocktrans %}</p>
+                    <p><strong>{% trans "Email" %}:</strong> <a href="mailto:info@kiut.uz">info@kiut.uz</a></p>
+                    <p>{% blocktrans %}<strong>Telefon:</strong> +998 (78) 129-40-40{% endblocktrans %}</p>
+                    <p>{% blocktrans %}<strong>Ish vaqti:</strong> Har kuni 9:00 - 16:00{% endblocktrans %}</p>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <h4>{% trans "Resurslar" %}</h4>
+                    <ul class="list-unstyled footer-links">
+                        <li><i class="fas fa-check"></i> <a href="https://erasmus.uz" target="_blank">Erasmus.uz</a>
+                        </li>
+                        <li><i class="fas fa-check"></i> <a href="https://edu.uz" target="_blank">Edu.uz</a></li>
+                        <li><i class="fas fa-check"></i> <a href="https://kiut.uz" target="_blank">kiut.uz</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-12 text-center text-md-start mb-2 mb-md-0">
+                    <p class="copyright-text mb-0 text-white">{% trans "© Copyright 2025 | Usman Niyazbekov" %}</p>
+                </div>
+                <div class="col-md-5 col-12 text-center text-md-end">
+                    <div class="social-icons-footer">
+                        <a href="#" class="social-icon-item"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon-item"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" class="social-icon-item"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon-item"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" id="scrollTopBtn" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/loader.js' %}"></script>
+
+    <!-- Tilni almashtirish uchun JavaScript -->
+    <script>
+        function setLanguage(langCode) {
+            document.getElementById('language-input').value = langCode;
+            document.getElementById('language-form').submit();
+        }
+    </script>
+
+</body>
+
+</html>

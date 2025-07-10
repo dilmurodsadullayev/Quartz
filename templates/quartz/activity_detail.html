@@ -1,0 +1,160 @@
+{% extends 'quartz/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{{ activity.title }} - {% trans "QUARTZ" %}
+{% endblock title %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f4f7f6;
+    }
+
+    .activity-detail-card {
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        overflow: hidden; /* Header burchaklari yumaloq bo'lishi uchun muhim */
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .activity-header {
+        color: white;
+        padding: 2.5rem 2rem;
+        position: relative;
+        /* Rasm uchun fon sozlamalari */
+        background-size: cover;
+        background-position: center;
+        /* Rasmsiz holat uchun standart fon */
+        background-image: linear-gradient(135deg, #007bff, #4e54c8);
+    }
+
+    /* Rasm ustidagi matnni o'qiladigan qilish uchun qoplama (overlay) */
+    .activity-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Agar rasm bo'lsa, bu gradient qoplama bo'lib ishlaydi */
+        background: linear-gradient(135deg, rgba(0, 123, 255, 0.7), rgba(78, 84, 200, 0.8));
+        z-index: 1;
+    }
+
+    /* Header ichidagi barcha elementlar qoplamadan tepada turishi uchun */
+    .activity-header > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    .activity-title {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-top: 2.5rem; /* Orqaga tugmasidan keyin joy */
+        margin-bottom: 1rem;
+    }
+
+    .activity-meta {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .meta-item i {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .activity-content-body {
+        padding: 2.5rem 2rem;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #343a40;
+    }
+    /* CKEditor stillarini yaxshilash */
+    .activity-content-body p {
+        margin-bottom: 1.2rem;
+    }
+    .activity-content-body h2 {
+        font-size: 1.8rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #2c3e50;
+    }
+    .activity-content-body h3 {
+        font-size: 1.5rem;
+        margin-top: 1.8rem;
+        margin-bottom: 0.8rem;
+        color: #34495e;
+    }
+
+    .back-button {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        color: white;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        backdrop-filter: blur(5px);
+        font-size: 0.9rem;
+    }
+
+    .back-button:hover {
+        transform: translateX(-5px);
+        color: white;
+        background: rgba(255, 255, 255, 0.3);
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="activity-detail-card">
+
+                <!-- Header qismi. Agar rasm bo'lsa, orqa fon sifatida qo'yiladi -->
+                <div class="activity-header" {% if activity.cover_image %} style="background-image: url('{{ activity.cover_image.url }}');" {% endif %}>
+
+                    <a href="{% url 'activity' %}" class="back-button">
+                        <i class="fas fa-arrow-left"></i>
+                        {% trans "Barcha faoliyatlar" %}
+                    </a>
+                    
+                    <h1 class="activity-title">{{ activity.title }}</h1>
+                    
+                    <div class="activity-meta">
+                        {% if activity.created_at %}
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>{{ activity.created_at|date:"d F Y" }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Asosiy matn qismi -->
+                <div class="activity-content-body">
+                    {{ activity.content | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

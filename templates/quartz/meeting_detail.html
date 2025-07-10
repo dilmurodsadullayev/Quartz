@@ -1,0 +1,101 @@
+{% extends 'quartz/base.html' %}
+{% load static %}
+{% block title %}
+{{ activity.title }} - the QUARTZ
+{% endblock title %}
+
+{% block content %}
+    <style>
+        .meeting-detail-card {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .meeting-header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .meeting-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .meeting-meta {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .meta-item i {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .meeting-content {
+            padding: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+            color: white;
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+
+    <div class="container mt-5 mb-5">
+        <div class="meeting-detail-card">
+            <div class="meeting-header">
+                <a href="{% url 'meeting' %}" class="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                    Orqaga
+                </a>
+                <h1 class="meeting-title">{{ meeting.title }}</h1>
+                <div class="meeting-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>{{ meeting.meeting_date }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>{{ meeting.location }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="meeting-content">
+                {{ meeting.content }}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
