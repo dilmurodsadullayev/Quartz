@@ -11,7 +11,7 @@
 <style>
     .image-title {
     position: absolute;
-    top: 10px; /* yuqoridan joylashishi */
+    top: 84%; /* yuqoridan joylashishi */
     left: 10px;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.6); /* qora shaffof fon */
@@ -42,6 +42,24 @@
             <div class="carousel-item active">
                 <img src="{% static 'img/sliderimg/rasim1.png' %}" class="d-block w-100" alt="{% trans 'Slayder rasmi 1' %}">
                 <div class="carousel-caption custom-caption">
+                   <a href="http://195.158.8.45:5351/uz/news/1/detail"
+                       style="display: inline-block;
+                              padding: 12px 28px;
+                              background: rgba(0, 0, 0, 0.35);
+                              backdrop-filter: blur(10px);
+                              -webkit-backdrop-filter: blur(10px);
+                              border-radius: 12px;
+                              border: 1px solid rgba(255, 255, 255, 0.18);
+                              box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+                              color: #fff;
+                              text-decoration: none;
+                              font-weight: 600;
+                              font-size: 22px;
+                              transition: all 0.3s ease;
+                              position: relative;
+                              top: 10px;">
+                        {{ news_one.title }}
+                    </a>
                 </div>
             </div>
 
