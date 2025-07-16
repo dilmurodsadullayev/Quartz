@@ -9,7 +9,7 @@
 {% block content %}
 <style>
     body {
-        padding-top: 20px;
+        padding-top: 30px;
         padding-bottom: 40px;
         background-color: #f8f9fa;
     }
@@ -70,8 +70,8 @@
 
     .meeting-card {
         perspective: 1000px;
-        height: 300px;
         margin-bottom: 30px;
+        height: 100%;
     }
 
     .card-inner {
@@ -83,6 +83,7 @@
         transform-style: preserve-3d;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         border-radius: 15px;
+        min-height: 300px;
     }
 
     .meeting-card:hover .card-inner {
@@ -98,11 +99,17 @@
         backface-visibility: hidden;
         border-radius: 15px;
         overflow: hidden;
+        top: 0;
+        left: 0;
     }
 
     .card-front {
         background-color: #ffffff;
         color: #2c3e50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
     }
 
     .card-back {
@@ -113,14 +120,7 @@
         flex-direction: column;
         justify-content: center;
         padding: 20px;
-    }
-
-    .card-front .card-body {
-        padding: 20px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        text-align: left;
     }
 
     .card-back .card-title {
@@ -155,15 +155,16 @@
     }
 </style>
 
+
 <section class="meetings-section">
     <div class="container mt-5">
         <!-- Section Header -->
-
         <div class="row gy-4">
             {% for meeting in meetings %}
-            <div class="col-lg-4 col-md-6">
-                <div class="meeting-card">
+            <div class="col-lg-4 col-md-6 d-flex">
+                <div class="meeting-card w-100">
                     <div class="card-inner">
+                        <!-- Front Side -->
                         <div class="card-front">
                             <div class="card-body">
                                 <div class="d-flex align-items-center mb-3 justify-content-center">
@@ -186,6 +187,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Back Side -->
                         <div class="card-back">
                             <div class="card-body">
                                 <h5 class="card-title">{{ meeting.title }}</h5>
@@ -195,12 +197,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
             {% empty %}
-                <div class="col-12 text-center">
-                    <h3 class="text-muted">{% trans "Hozircha uchrashuvlar mavjud emas." %}</h3>
-                </div>
+            <div class="col-12 text-center">
+                <h3 class="text-muted">{% trans "Hozircha uchrashuvlar mavjud emas." %}</h3>
+            </div>
             {% endfor %}
         </div>
     </div>
 </section>
+<br>
+<br>
 {% endblock content %}
