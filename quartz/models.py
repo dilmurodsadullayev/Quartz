@@ -47,7 +47,7 @@ class News(models.Model):
     cover_image = models.ImageField(upload_to=news_image_directory_path)
     description = models.TextField()
     content = RichTextUploadingField()  # Bu yerda editor ishlaydi
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return self.title[:30]
