@@ -2,6 +2,7 @@ from django.db import models
 import os
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.translation import gettext_lazy as _
 
 def photo_directory_path(instance, filename):
     photo_id = instance.id or 'temp'
@@ -84,6 +85,22 @@ class Tender(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Feedback(models.Model):
+    name = models.CharField(_("Ism"), max_length=100)
+    phone = models.CharField(_("Telefon raqam"), max_length=20)
+    subject = models.CharField(_("Sarlavha"), max_length=255)
+    message = models.TextField(_("Xabar matni"))
+    created_at = models.DateTimeField(_("Yuborilgan vaqti"), auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.subject} ({self.name})"
+
+    class Meta:
+        verbose_name = _("Murojaat")
+        verbose_name_plural = _("Murojaatlar")
+        ordering = ['-created_at']
 
 
 

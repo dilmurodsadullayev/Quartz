@@ -24,6 +24,16 @@
     <link rel="stylesheet" href="{% static 'css/partners.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="{% static 'css/slider-custom.css' %}">
+
+    <!-- AKTIV LINK UCHUN MAXSUS STIL -->
+    <style>
+        .custom-navbar .nav-link.active {
+            /* O'zingizga mos rangni tanlashingiz mumkin */
+            color: #6ABD5F !important;
+            font-weight: 700;
+            border-bottom: 2px solid #6ABD5F;
+        }
+    </style>
 </head>
 
 <body>
@@ -62,14 +72,31 @@
                 <div class="main-nav-content">
                     <div class="collapse navbar-collapse" id="navbarNavContent">
                         <ul class="navbar-nav me-auto">
-                            <li class="nav-item"><a class="nav-link" href="{% url 'project' %}">{% trans "Loyiha haqida" %}</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'news' %}">{% trans "Yangiliklar" %}</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'activity' %}">{% trans "Faoliyat" %}</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'meeting' %}">{% trans "Uchrashuvlar" %}</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'tender' %}">{% trans "Tender" %}</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'partners' %}">{% trans "Hamkorlar" %}</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'feedback' %}">{% trans "Takliflar" %}</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'training' %}">{% trans "Hujjatlar" %}</a></li>
+                            <!-- Har bir linkka `request.resolver_match.url_name` bilan tekshiruv qo'shildi -->
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'project' %}active{% endif %}" href="{% url 'project' %}">{% trans "Loyiha haqida" %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'news' or request.resolver_match.url_name == 'news_detail' %}active{% endif %}" href="{% url 'news' %}">{% trans "Yangiliklar" %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'activity' %}active{% endif %}" href="{% url 'activity' %}">{% trans "Faoliyat" %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'meeting' or request.resolver_match.url_name == 'meeting_detail' %}active{% endif %}" href="{% url 'meeting' %}">{% trans "Uchrashuvlar" %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'tender' or request.resolver_match.url_name == 'tender_detail' %}active{% endif %}" href="{% url 'tender' %}">{% trans "Tender" %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'partners' %}active{% endif %}" href="{% url 'partners' %}">{% trans "Hamkorlar" %}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'feedback' %}active{% endif %}" href="{% url 'feedback' %}">{% trans "Takliflar" %}</a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link {% if request.resolver_match.url_name == 'training' or request.resolver_match.url_name == 'training_detail' %}active{% endif %}" href="{% url 'training' %}">{% trans "Hujjatlar" %}</a>
+                            </li>
                         </ul>
                         <div class="right-nav-items">
                             <a class="nav-link lms-button" target="_blank" href="http://lms.quartzuz.uz/login/index.php">{% trans "LMS" %}</a>

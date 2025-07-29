@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import News, Activity, Tender, Meeting
-#
+from django.contrib import messages
+from .forms import FeedbackForm
+from django.utils.translation import gettext as _
 from languages import en
 from languages import uz
 
@@ -111,8 +113,16 @@ def tender_detail_view(request, tender_id):
     return render(request, 'quartz/tender_detail.html', ctx)
 
 def feedback_view(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _("Sizning murojaatingiz muvaffaqiyatli yuborildi. Adminga xabar berildi!"))
+            return redirect('feedback')
+    else:
+        form = FeedbackForm()
     ctx = {
-
+        'form': form
     }
     return render(request, 'quartz/feedback.html', ctx)
 
@@ -128,6 +138,8 @@ def training_view(request):
 
     }
     return render(request, 'quartz/training.html', ctx)
+
+
 
 
 def custom_404(request, exception):

@@ -8,6 +8,7 @@
 
 {% block content %}
 <style>
+    /* CSS kodlaringiz o'zgarishsiz qoladi */
     body {
         background-color: #f8f9fa;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -88,6 +89,13 @@
     .form-group {
         margin-bottom: 1.25rem;
     }
+     .errorlist {
+        list-style-type: none;
+        padding: 0;
+        margin: 5px 0 0 0;
+        color: #dc3545; /* Qizil rang */
+        font-size: 0.875em;
+    }
 
     @media (max-width: 767.98px) {
         .submit-button-wrapper {
@@ -107,23 +115,39 @@
             <h2 class="form-title mb-0">{% trans "Takliflar va Savollar Bo'yicha Murojaat" %}</h2>
         </div>
 
-        <form action="{% url 'feedback' %}" method="POST">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success mt-3" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form action="{% url 'feedback' %}" method="POST" class="mt-4">
             {% csrf_token %}
             <div class="row">
                 <div class="col-md-5">
                     <div class="form-group">
-                        <input type="text" name="name" class="form-control" id="contactName" placeholder="{% trans "Ismingiz" %}" required>
+                        <!-- Ism maydoni -->
+                        {{ form.name }}
+                        {{ form.name.errors }}
                     </div>
                     <div class="form-group">
-                        <input type="text" name="phone" class="form-control" id="contactEmail" placeholder="{% trans "Telefon raqamingiz" %}" required>
+                        <!-- Telefon raqam maydoni -->
+                        {{ form.phone }}
+                        {{ form.phone.errors }}
                     </div>
                     <div class="form-group">
-                        <input type="text" name="subject" class="form-control" id="contactSubject" placeholder="{% trans "Sarlavha" %}" required>
+                        <!-- Sarlavha maydoni -->
+                        {{ form.subject }}
+                        {{ form.subject.errors }}
                     </div>
                 </div>
                 <div class="col-md-7">
                     <div class="form-group">
-                        <textarea name="message" class="form-control" id="contactMessage" rows="7" placeholder="{% trans "Xabar matni..." %}" required></textarea>
+                        <!-- Xabar matni maydoni -->
+                        {{ form.message }}
+                        {{ form.message.errors }}
                     </div>
                     <div class="text-end submit-button-wrapper">
                         <button type="submit" class="btn btn-submit-custom">

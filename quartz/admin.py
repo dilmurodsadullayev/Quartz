@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 from modeltranslation.admin import TabbedTranslationAdmin
-from .models import Photo, Video, News, Activity, Meeting, Tender
+from .models import Photo, Video, News, Activity, Meeting, Tender, Feedback
 
 # Har bir model uchun TabbedTranslationAdmin'dan meros olamiz
 @admin.register(Photo)
@@ -28,3 +28,12 @@ class MeetingAdmin(TabbedTranslationAdmin):
 @admin.register(Tender)
 class TenderAdmin(TabbedTranslationAdmin):
     list_display = ('title', 'start_time', 'end_time')
+
+
+
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ('subject', 'name', 'phone', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('name', 'phone', 'subject', 'message')
+    readonly_fields = ('name', 'phone', 'subject', 'message', 'created_at')
