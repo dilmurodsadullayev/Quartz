@@ -19,6 +19,7 @@ def index_view(request):
     news = News.objects.order_by('-created_at')[:3]
     tenders = Tender.objects.order_by('-created_at')[:3]
     news_one = News.objects.get(id=1)
+    meeting_one = Meeting.objects.get(id=2)
 
     language = request.session.get('language', 'en')
 
@@ -31,7 +32,8 @@ def index_view(request):
         'news': news,
         'tenders': tenders,
         'translations': translations,
-        'news_one': news_one
+        'news_one': news_one,
+        'meeting_one':meeting_one
     }
     return render(request, 'quartz/index.html', ctx)
 
