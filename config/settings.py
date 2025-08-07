@@ -30,10 +30,18 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "195.158.8.45",
+    "quartzuz.uz",
+    "www.quartzuz.uz",
+    "localhost",
+    "127.0.0.1"
+]
+
 
 CSRF_TRUSTED_ORIGINS = [
     'http://195.158.8.45:5351',
+    'http://195.158.8.45',
     'http://localhost:8000', # Agar lokal test qilsangiz
     'http://127.0.0.1:8000', # Agar lokal test qilsangiz
 ]
